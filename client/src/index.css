@@ -1,0 +1,267 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Filmio brand colors */
+  --color-filmio-sea: var(--filmio-sea);
+  --color-filmio-green: var(--filmio-green);
+  --color-filmio-orange: var(--filmio-orange);
+  --color-filmio-pink: var(--filmio-pink);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Filmio brand palette */
+  --filmio-sea: oklch(0.65 0.18 220);        /* #00AEEF cyan-blue */
+  --filmio-green: oklch(0.85 0.18 145);      /* #75F69E mint green */
+  --filmio-orange: oklch(0.72 0.18 50);      /* #F7941D orange */
+  --filmio-pink: oklch(0.55 0.25 340);       /* #E91E8C magenta */
+
+  /* Primary = filmio-sea blue */
+  --primary: oklch(0.65 0.18 220);
+  --primary-foreground: oklch(0.98 0 0);
+
+  /* Dark cinematic background */
+  --background: oklch(0.10 0.015 240);
+  --foreground: oklch(0.95 0.005 240);
+
+  --card: oklch(0.13 0.015 240);
+  --card-foreground: oklch(0.95 0.005 240);
+  --popover: oklch(0.13 0.015 240);
+  --popover-foreground: oklch(0.95 0.005 240);
+
+  --secondary: oklch(0.18 0.015 240);
+  --secondary-foreground: oklch(0.85 0.005 240);
+
+  --muted: oklch(0.20 0.015 240);
+  --muted-foreground: oklch(0.60 0.010 240);
+
+  --accent: oklch(0.55 0.25 340);
+  --accent-foreground: oklch(0.98 0 0);
+
+  --destructive: oklch(0.60 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(1 0 0 / 8%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.65 0.18 220);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Montserrat', 'Inter', sans-serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href] {
+    @apply cursor-pointer;
+  }
+}
+
+/* =============================================
+   FILMIO CINEMATIC DESIGN SYSTEM
+   Dark, aurora-lit, cinematic investor page
+   ============================================= */
+
+/* Font utilities */
+.font-display {
+  font-family: 'Montserrat', sans-serif;
+}
+.font-body {
+  font-family: 'Inter', 'Montserrat', sans-serif;
+}
+
+/* Section backgrounds */
+.bg-cinematic-hero {
+  background: transparent;
+}
+.bg-cinematic-highlights {
+  background: rgba(7, 17, 29, 0.6);
+}
+.bg-cinematic-why {
+  background: rgba(7, 8, 15, 0.7);
+}
+.bg-cinematic-problem {
+  background: rgba(16, 7, 17, 0.6);
+}
+.bg-cinematic-fund {
+  background: rgba(7, 17, 29, 0.6);
+}
+.bg-cinematic-team {
+  background: rgba(7, 8, 15, 0.5);
+}
+.bg-cinematic-cta {
+  background: rgba(7, 8, 15, 0.7);
+}
+.bg-cinematic-footer {
+  background: rgba(5, 5, 10, 0.9);
+}
+
+/* Card styles */
+.card-cinematic {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+}
+.card-cinematic-green {
+  background: rgba(117, 246, 158, 0.04);
+}
+.card-spotlight {
+  background: rgba(255, 255, 255, 0.02);
+  transition: background 0.2s;
+}
+.card-spotlight:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+.card-aurora-blue {
+  background: linear-gradient(135deg, rgba(0, 174, 239, 0.06) 0%, rgba(0, 174, 239, 0.02) 100%);
+}
+.card-aurora-green {
+  background: linear-gradient(135deg, rgba(117, 246, 158, 0.05) 0%, rgba(117, 246, 158, 0.01) 100%);
+}
+
+/* Spotlight hover effects */
+.spot-green:hover {
+  background: rgba(117, 246, 158, 0.04);
+}
+.spot-primary:hover {
+  background: rgba(0, 174, 239, 0.04);
+}
+.spot-sea:hover {
+  background: rgba(0, 174, 239, 0.04);
+}
+
+/* Text color utilities */
+.text-filmio-sea {
+  color: oklch(0.65 0.18 220);
+}
+.text-filmio-green {
+  color: oklch(0.85 0.18 145);
+}
+.text-filmio-orange {
+  color: oklch(0.72 0.18 50);
+}
+.text-filmio-pink {
+  color: oklch(0.55 0.25 340);
+}
+
+/* Border color utilities */
+.border-filmio-sea\/30 { border-color: oklch(0.65 0.18 220 / 0.30); }
+.border-filmio-sea\/20 { border-color: oklch(0.65 0.18 220 / 0.20); }
+.border-filmio-green\/20 { border-color: oklch(0.85 0.18 145 / 0.20); }
+.border-filmio-green\/15 { border-color: oklch(0.85 0.18 145 / 0.15); }
+.border-filmio-green\/25 { border-color: oklch(0.85 0.18 145 / 0.25); }
+
+/* Background utilities */
+.bg-filmio-sea\/10 { background-color: oklch(0.65 0.18 220 / 0.10); }
+.bg-filmio-sea\/5 { background-color: oklch(0.65 0.18 220 / 0.05); }
+.bg-filmio-green\/10 { background-color: oklch(0.85 0.18 145 / 0.10); }
+.bg-filmio-green\/20 { background-color: oklch(0.85 0.18 145 / 0.20); }
+.bg-destructive\/10 { background-color: oklch(0.60 0.22 25 / 0.10); }
+
+/* Gradient utilities */
+.via-filmio-sea { --tw-gradient-via: oklch(0.65 0.18 220); }
+.via-filmio-green { --tw-gradient-via: oklch(0.85 0.18 145); }
+.from-filmio-green { --tw-gradient-from: oklch(0.85 0.18 145); }
+.to-filmio-green\/60 { --tw-gradient-to: oklch(0.85 0.18 145 / 0.60); }
+
+/* Aurora drift animations */
+@keyframes aurora-drift-1 {
+  0%, 100% { transform: translate3d(0px, 0px, 0px); }
+  33% { transform: translate3d(30px, -20px, 0px); }
+  66% { transform: translate3d(-20px, 15px, 0px); }
+}
+@keyframes aurora-drift-2 {
+  0%, 100% { transform: translate3d(0px, 0px, 0px); }
+  33% { transform: translate3d(-25px, 20px, 0px); }
+  66% { transform: translate3d(20px, -15px, 0px); }
+}
+@keyframes aurora-drift-3 {
+  0%, 100% { transform: translate3d(0px, 0px, 0px); }
+  50% { transform: translate3d(15px, -25px, 0px); }
+}
+
+.aurora-drift-1 { animation: aurora-drift-1 18s ease-in-out infinite; }
+.aurora-drift-2 { animation: aurora-drift-2 22s ease-in-out infinite; }
+.aurora-drift-3 { animation: aurora-drift-3 26s ease-in-out infinite; }
+
+/* Ping animation for live dot */
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+.animate-ping { animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite; }
+
+/* Tabular nums */
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* Tracking */
+.tracking-tight { letter-spacing: -0.025em; }
+
+/* Roadmap timeline */
+.roadmap-line::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1px;
+  background: linear-gradient(to bottom, oklch(0.65 0.18 220 / 0.4), oklch(0.65 0.18 220 / 0.15), transparent);
+}
+
+@media (min-width: 768px) {
+  .roadmap-line::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .flex { min-height: 0; min-width: 0; }
+
+  @media (min-width: 640px) {
+    .container { padding-left: 1.5rem; padding-right: 1.5rem; }
+  }
+  @media (min-width: 1024px) {
+    .container { padding-left: 2rem; padding-right: 2rem; max-width: 1280px; }
+  }
+}

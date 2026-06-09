@@ -1,0 +1,1175 @@
+--- client/src/pages/Home.tsx
+// Filmio Studios Investor Landing Page
+// Design: Cinematic dark theme with aurora gradient background
+// Colors: Deep navy/black bg, filmio-sea (#00AEEF), filmio-green (#75F69E), filmio-pink (#E91E8C)
+// Fonts: Montserrat (display), Inter (body)
+
+import { AuroraBackground } from "@/components/AuroraBackground";
+import { HeroSection } from "@/components/HeroSection";
+import { InvestmentHighlights } from "@/components/InvestmentHighlights";
+import { WhyInvestNow } from "@/components/WhyInvestNow";
+import { TheProblem } from "@/components/TheProblem";
+import { FilmFund } from "@/components/FilmFund";
+import { TeamSection } from "@/components/TeamSection";
+import { TrackRecord } from "@/components/TrackRecord";
+import { Roadmap } from "@/components/Roadmap";
+import { TheRaise } from "@/components/TheRaise";
+import { InvestmentTerms } from "@/components/InvestmentTerms";
+import { FilmioFooter } from "@/components/FilmioFooter";
+import { FilmioNav } from "@/components/FilmioNav";
+import { MobileBookingBar } from "@/components/MobileBookingBar";
+
+export default function Home() {
+  return (
+    <div className="relative isolate min-h-screen w-full overflow-x-hidden pb-16 md:pb-0">
+      <AuroraBackground />
+      <div className="relative z-10">
+        <FilmioNav />
+        <HeroSection />
+        <InvestmentHighlights />
+        <WhyInvestNow />
+        <TheProblem />
+        <FilmFund />
+        <TeamSection />
+        <TrackRecord />
+        <Roadmap />
+        <TheRaise />
+        <InvestmentTerms />
+        <FilmioFooter />
+      </div>
+      <MobileBookingBar />
+    </div>
+  );
+}
+--- client/src/components/FilmioNav.tsx
+// FilmioNav: Sticky top navigation bar
+const LOGO_URL = "/manus-storage/filmio-logo-DxmMtisv_1d1121d3.avif";
+
+export function FilmioNav() {
+  const scrollToBooking = () => {
+    const el = document.getElementById("highlevel-embed");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-foreground/[0.06]">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 h-14 flex items-center justify-between">
+        <img alt="Filmio Studios" className="h-8" src={LOGO_URL} />
+        <button
+          onClick={scrollToBooking}
+          className="inline-flex items-center px-5 py-2 bg-primary text-primary-foreground font-body text-xs font-bold rounded-full hover:bg-primary/90 transition-colors"
+        >
+          Book a Call
+        </button>
+      </div>
+    </nav>
+  );
+}
+--- client/src/components/HeroSection.tsx
+// HeroSection: Main hero with headline, stats grid, and booking calendar iframe
+
+export function HeroSection() {
+  return (
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[120px]" />
+      </div>
+      <div
+        className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 pt-10 pb-12 md:pt-16 md:pb-20"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr",
+          gap: "2.5rem",
+          alignItems: "start",
+        }}
+      >
+        {/* On large screens: two columns */}
+        <style>{`
+          @media (min-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr 1.15fr !important; }
+          }
+        `}</style>
+        <div
+          className="hero-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            gap: "2.5rem",
+            alignItems: "start",
+          }}
+        >
+          {/* Left: copy */}
+          <div className="pt-2">
+            {/* Badge */}
+            <div
+              className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6"
+              style={{
+                background: "rgba(117,246,158,0.10)",
+                border: "1px solid rgba(117,246,158,0.30)",
+              }}
+            >
+              <span className="relative flex h-2 w-2">
+                <span
+                  className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+                  style={{ background: "#75F69E" }}
+                />
+                <span
+                  className="relative inline-flex rounded-full h-2 w-2"
+                  style={{ background: "#75F69E" }}
+                />
+              </span>
+              <span
+                className="font-body text-xs font-semibold"
+                style={{ color: "#75F69E" }}
+              >
+                First $1M tranche closing soon: 30% discount
+              </span>
+            </div>
+
+            {/* Headline */}
+            <h1
+              className="font-display leading-[1.08] text-foreground mb-5 font-extrabold tracking-tight"
+              style={{ fontSize: "clamp(1.9rem, 4.5vw, 3.1rem)" }}
+            >
+              Be the Reason Hollywood's Next Hit Gets Made.
+            </h1>
+
+            {/* Backed by badge */}
+            <div
+              className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-5"
+              style={{
+                background: "rgba(255,255,255,0.04)",
+                border: "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              <span className="font-body text-xs" style={{ color: "rgba(255,255,255,0.6)" }}>
+                Backed by{" "}
+                <strong style={{ color: "rgba(255,255,255,0.9)" }}>Kevin Harrington</strong>,
+                original{" "}
+                <strong style={{ color: "rgba(255,255,255,0.9)" }}>Shark Tank</strong> investor
+              </span>
+            </div>
+
+            {/* Body copy */}
+            <p
+              className="font-body text-sm md:text-base max-w-lg mb-8 leading-relaxed"
+              style={{ color: "rgba(255,255,255,0.6)" }}
+            >
+              Filmio Studios is building the{" "}
+              <strong style={{ color: "rgba(255,255,255,0.9)" }}>
+                fan-owned, AI-powered studio
+              </strong>
+              , the next Angel Studios, without limits. Invest now for equity ownership, Co-GP
+              status, and uncapped cash flow potential.
+            </p>
+
+            {/* Stats grid */}
+            <div
+              className="mb-6"
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "0.75rem",
+                maxWidth: "28rem",
+              }}
+            >
+              {[
+                { value: "63x", label: "Potential ROI" },
+                { value: "28–40%", label: "Target IRR" },
+                { value: "5x+", label: "Cash Flow ROI" },
+                { value: "30%", label: "Equity Discount" },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-lg py-3 px-4"
+                  style={{
+                    background: "rgba(255,255,255,0.03)",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                  }}
+                >
+                  <div
+                    className="font-display text-xl md:text-2xl tabular-nums font-semibold"
+                    style={{ color: "oklch(0.65 0.18 220)" }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div
+                    className="font-body text-[10px] mt-0.5 uppercase tracking-wide"
+                    style={{ color: "rgba(255,255,255,0.45)" }}
+                  >
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="font-body text-xs" style={{ color: "rgba(255,255,255,0.28)" }}>
+              20-minute discovery call · No obligation · Accredited investors only
+            </p>
+          </div>
+
+          {/* Right: booking calendar */}
+          <div className="w-full">
+            <p
+              className="font-body text-xs uppercase tracking-[0.2em] mb-2 text-center font-semibold"
+              style={{ color: "oklch(0.65 0.18 220)" }}
+            >
+              Book a Discovery Call
+            </p>
+            <div
+              className="w-full overflow-hidden rounded-lg"
+              id="highlevel-embed"
+              style={{ maxHeight: 700 }}
+            >
+              <iframe
+                scrolling="yes"
+                src="https://api.leadconnectorhq.com/widget/bookings/filmio-studios-discovery"
+                style={{ width: "100%", border: "none", height: 650, display: "block" }}
+                title="Book a Discovery Call"
+              />
+            </div>
+            <p
+              className="font-body text-[10px] md:text-xs text-center mt-1"
+              style={{ color: "rgba(255,255,255,0.28)" }}
+            >
+              Times shown in your local timezone · Confirmation sent instantly
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+--- client/src/components/TheRaise.tsx
+// TheRaise: $2M SAFE + $3M priced round details with use of funds
+import { TrendingUp, Users, Cpu, Briefcase, Target, Handshake } from "lucide-react";
+
+const USE_OF_FUNDS = [
+  {
+    icon: <Users className="h-5 w-5 text-filmio-sea mb-3" />,
+    title: "Growth + Creator/Fan Onboarding",
+    desc: "Expand the validation engine by scaling both supply and demand.",
+  },
+  {
+    icon: <Cpu className="h-5 w-5 text-filmio-sea mb-3" />,
+    title: "AI + Platform Integration",
+    desc: "Enhance predictive capabilities and deepen ecosystem connectivity.",
+  },
+  {
+    icon: <Briefcase className="h-5 w-5 text-filmio-sea mb-3" />,
+    title: "Studio Operations",
+    desc: "Build production and distribution infrastructure partnerships.",
+  },
+  {
+    icon: <Target className="h-5 w-5 text-filmio-sea mb-3" />,
+    title: "Project Acquisition",
+    desc: "Secure exclusive rights to top-scoring projects.",
+  },
+  {
+    icon: <Handshake className="h-5 w-5 text-filmio-sea mb-3" />,
+    title: "Capital Partnership",
+    desc: "Establish content investment structures.",
+  },
+];
+
+export function TheRaise() {
+  return (
+    <section className="bg-cinematic-team border-t border-white/5">
+      <div className="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-filmio-sea/30 bg-filmio-sea/5 mb-4">
+            <TrendingUp className="h-3.5 w-3.5 text-filmio-sea" />
+            <span className="font-body text-[11px] uppercase tracking-[0.15em] text-filmio-sea">
+              The Raise
+            </span>
+          </div>
+          <h2 className="font-display text-2xl md:text-4xl text-foreground font-extrabold tracking-tight mb-3">
+            Raising{" "}
+            <span className="text-filmio-sea">$2M SAFE</span> in two tranches +{" "}
+            <span className="text-filmio-sea">$3M priced round</span>
+          </h2>
+          <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mt-6" />
+        </div>
+
+        {/* Key metrics */}
+        <div className="grid grid-cols-2 gap-4 md:gap-6 max-w-3xl mx-auto mb-12">
+          <div className="card-cinematic border border-primary/30 rounded-xl p-6 md:p-8 text-center bg-primary/5">
+            <div className="font-display text-4xl md:text-5xl font-extrabold text-primary tabular-nums mb-1">
+              15%
+            </div>
+            <div className="font-body text-xs md:text-sm uppercase tracking-wider text-foreground">
+              Discount
+            </div>
+          </div>
+          <div className="card-cinematic border border-primary/30 rounded-xl p-6 md:p-8 text-center bg-primary/5">
+            <div className="font-display text-4xl md:text-5xl font-extrabold text-primary tabular-nums mb-1">
+              $30M
+            </div>
+            <div className="font-body text-xs md:text-sm uppercase tracking-wider text-foreground">
+              Valuation Cap
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center mb-6">
+          <h3 className="font-display text-xl md:text-2xl text-filmio-sea font-bold">
+            Use of Funds
+          </h3>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {USE_OF_FUNDS.map((item) => (
+            <div key={item.title} className="card-aurora-green border border-filmio-green/15 rounded-lg p-5">
+              {item.icon}
+              <h4 className="font-body text-sm font-bold text-foreground mb-1">{item.title}</h4>
+              <p className="font-body text-xs md:text-sm text-foreground leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+--- client/src/components/InvestmentHighlights.tsx
+// InvestmentHighlights: Section with equity, IRR, cash flow, perks, tax, diversified revenue cards
+import {
+  TrendingUp, ChartColumn, DollarSign, Gift, Shield, Layers,
+} from "lucide-react";
+
+function BookCallBtn({ label = "Book a Call to Learn More" }: { label?: string }) {
+  const scrollToBooking = () => {
+    const el = document.getElementById("highlevel-embed");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+  return (
+    <button
+      onClick={scrollToBooking}
+      className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-body text-sm font-bold rounded-full hover:bg-primary/90 transition-colors"
+    >
+      {label}
+    </button>
+  );
+}
+
+export function InvestmentHighlights() {
+  return (
+    <section className="bg-cinematic-highlights">
+      <div className="max-w-5xl mx-auto px-5 md:px-8 py-16 md:py-24">
+        <h2 className="font-display text-2xl md:text-4xl text-foreground text-center mb-4 font-extrabold tracking-tight">
+          Investment Highlights
+        </h2>
+        <p className="font-body text-sm text-foreground/50 text-center mb-3 max-w-lg mx-auto">
+          Multiple paths to returns: equity, cash flow, royalties, and exclusive experiences.
+        </p>
+        <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-filmio-sea to-transparent mb-12" />
+
+        {/* Featured card – 63x Equity */}
+        <div className="group mb-5 relative overflow-hidden rounded-lg border border-filmio-green/20 card-spotlight spot-green p-6 md:p-8">
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-filmio-green via-filmio-green/60 to-transparent" />
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            <div className="flex-shrink-0 flex flex-col items-center md:items-start">
+              <div className="w-12 h-12 rounded-lg bg-filmio-green/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                <TrendingUp className="text-filmio-green" size={24} />
+              </div>
+              <span className="font-display text-5xl md:text-6xl font-extrabold text-filmio-green tracking-tight">
+                63x
+              </span>
+              <span className="font-body text-xs text-foreground/40 mt-1">Potential ROI</span>
+            </div>
+            <div>
+              <h3 className="font-body text-base font-bold text-foreground mb-2">Equity Ownership</h3>
+              <p className="font-body text-sm text-foreground/50 leading-relaxed max-w-xl">
+                Angel Studios recently listed on NYSE at $1.6B. A similar result could mean a 63x ROI for investors.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Grid of smaller cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* IRR */}
+          <div className="group card-spotlight spot-primary border border-white/5 rounded-lg p-6">
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <ChartColumn className="text-filmio-sea" size={20} />
+            </div>
+            <span className="font-display text-3xl font-extrabold tracking-tight text-primary-foreground">28–40%</span>
+            <p className="font-body text-xs text-foreground/40 mb-2">Target IRR</p>
+            <p className="font-body text-sm text-foreground/50 leading-relaxed">
+              As a co-GP in our film fund, you'll share in performance-based profits.
+            </p>
+          </div>
+
+          {/* Cash Flow */}
+          <div className="group card-spotlight spot-primary border border-white/5 rounded-lg p-6">
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <DollarSign className="text-filmio-sea" size={20} />
+            </div>
+            <span className="font-display text-3xl font-extrabold tracking-tight text-primary-foreground">5x</span>
+            <p className="font-body text-xs text-foreground/40 mb-2">Cash Flow ROI</p>
+            <p className="font-body text-sm text-foreground/50 leading-relaxed">
+              Uncapped royalties from every film and TV series we produce.
+            </p>
+          </div>
+
+          {/* Exclusive Perks */}
+          <div className="group card-spotlight spot-sea border border-white/5 rounded-lg p-6">
+            <div className="w-10 h-10 rounded-lg bg-filmio-sea/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Gift className="text-filmio-sea" size={20} />
+            </div>
+            <h3 className="font-body text-sm font-bold text-foreground mb-2">Exclusive Perks</h3>
+            <p className="font-body text-sm text-foreground/50 leading-relaxed">
+              Executive Producer credits, table reads, set visits, premiere invites, and more.
+            </p>
+          </div>
+
+          {/* Tax */}
+          <div className="group card-spotlight spot-sea border border-white/5 rounded-lg p-6">
+            <div className="w-10 h-10 rounded-lg bg-filmio-sea/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Shield className="text-filmio-sea" size={20} />
+            </div>
+            <h3 className="font-body text-sm font-bold text-foreground mb-2">Tax Beneficial Structure</h3>
+            <p className="font-body text-sm text-foreground/50 leading-relaxed">
+              Fund-related expenses and depreciation may offset your income tax.
+            </p>
+          </div>
+
+          {/* Diversified */}
+          <div className="group sm:col-span-2 lg:col-span-2 card-spotlight spot-primary border border-white/5 rounded-lg p-6">
+            <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+              <Layers className="text-filmio-sea" size={20} />
+            </div>
+            <h3 className="font-body text-sm font-bold text-foreground mb-2">Diversified Revenue Streams</h3>
+            <p className="font-body text-sm text-foreground/50 leading-relaxed">
+              Participate in fund profits, royalties from theatrical releases and streaming.
+            </p>
+          </div>
+        </div>
+
+        <div className="text-center mt-10">
+          <BookCallBtn />
+        </div>
+      </div>
+    </section>
+  );
+}
+--- client/src/components/InvestmentTerms.tsx
+// InvestmentTerms: CTA section with special bonus and why act now cards
+import { Gift, CircleAlert, ArrowRight } from "lucide-react";
+
+export function InvestmentTerms() {
+  const scrollToBooking = () => {
+    const el = document.getElementById("highlevel-embed");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <section className="bg-cinematic-cta relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[100px] pointer-events-none" />
+      <div className="relative z-10 max-w-3xl mx-auto px-5 md:px-8 py-16 md:py-24 text-center">
+        <h2 className="font-display text-2xl md:text-4xl text-foreground mb-4 font-extrabold tracking-tight">
+          The Investment Terms
+        </h2>
+        <p className="font-body text-base text-foreground/50 mb-10 max-w-xl mx-auto">
+          We are raising $5M in 3 tranches. The first $1M tranche is currently live and offers
+          investors the most favorable terms.
+        </p>
+
+        <div className="grid md:grid-cols-2 gap-5 mb-8 text-left">
+          {/* Special Bonus */}
+          <div className="card-cinematic border border-primary/25 rounded-lg p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <Gift className="text-filmio-sea" size={18} />
+              <h3 className="font-body text-sm font-bold text-foreground">Special Bonus &amp; Perks</h3>
+            </div>
+            <p className="font-body text-sm text-foreground/50 leading-relaxed">
+              Executive Producer credits, table reads, set visits, premiere invites. Best equity
+              valuation with a{" "}
+              <strong className="text-filmio-green">30% discount</strong>.
+            </p>
+          </div>
+
+          {/* Why Act Now */}
+          <div className="card-cinematic card-cinematic-green border border-filmio-green/25 rounded-lg p-6">
+            <div className="flex items-center gap-2 mb-3">
+              <CircleAlert className="text-filmio-green" size={18} />
+              <h3 className="font-body text-sm font-bold text-foreground">Why Act Now?</h3>
+            </div>
+            <ul className="font-body text-sm text-foreground/50 leading-relaxed space-y-1">
+              <li>• Only tranche with a 30% discount</li>
+              <li>• Next tranche drops to just 15%</li>
+              <li>• Market comps show 63x+ ROI potential</li>
+            </ul>
+          </div>
+        </div>
+
+        <button
+          onClick={scrollToBooking}
+          className="inline-flex items-center gap-2 px-10 py-5 bg-primary text-primary-foreground font-body text-base font-bold rounded-full hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
+        >
+          Join the Movement. Book a Call
+          <ArrowRight size={18} />
+        </button>
+        <p className="font-body text-xs text-foreground/30 mt-4">
+          Limited availability · Accredited investors only
+        </p>
+      </div>
+    </section>
+  );
+}
+--- client/src/components/WhyInvestNow.tsx
+// WhyInvestNow: YouTube video embed + two benefit cards
+
+function BookCallBtn() {
+  const scrollToBooking = () => {
+    const el = document.getElementById("highlevel-embed");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+  return (
+    <button
+      onClick={scrollToBooking}
+      className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-body text-sm font-bold rounded-full hover:bg-primary/90 transition-colors"
+    >
+      Book a Call to Learn More
+    </button>
+  );
+}
+
+export function WhyInvestNow() {
+  return (
+    <section className="bg-cinematic-why">
+      <div className="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24">
+        <h2 className="font-display text-2xl md:text-4xl text-foreground text-center mb-4 font-extrabold tracking-tight">
+          Why Invest Now?
+        </h2>
+        <p className="font-body text-base text-foreground/50 text-center mb-10 max-w-xl mx-auto">
+          <strong className="text-foreground/80">Shark Tank's</strong> own{" "}
+          <strong className="text-foreground/80">Kevin Harrington</strong> explains why Filmio
+          Studios is a game-changer.
+        </p>
+
+        {/* YouTube embed */}
+        <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-foreground/[0.06] mb-8">
+          <iframe
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="absolute inset-0 w-full h-full"
+            frameBorder="0"
+            loading="lazy"
+            src="https://www.youtube.com/embed/ywc61r-BXlY?rel=0&modestbranding=1"
+            title="Kevin Harrington on Filmio Studios Investment"
+          />
+        </div>
+
+        {/* Benefit cards */}
+        <div className="grid md:grid-cols-2 gap-6 mt-12">
+          <div className="card-cinematic border border-white/5 rounded-lg p-6">
+            <h3 className="font-display text-lg text-foreground mb-2">Own a Piece of the Studio</h3>
+            <p className="font-body text-sm text-foreground/50 leading-relaxed">
+              When you invest in Filmio Studios, you become an owner in an innovative entertainment
+              company reshaping Hollywood.
+            </p>
+          </div>
+          <div className="card-cinematic border border-white/5 rounded-lg p-6">
+            <h3 className="font-display text-lg text-foreground mb-2">Receive Cash Flow Along the Way</h3>
+            <p className="font-body text-sm text-foreground/50 leading-relaxed">
+              As a Co-GP of the Filmio Studios film fund, you benefit from uncapped cash flow
+              potential and possible tax benefits.
+            </p>
+          </div>
+        </div>
+
+        <div className="text-center mt-10">
+          <BookCallBtn />
+        </div>
+      </div>
+    </section>
+  );
+}
+--- client/src/components/TheProblem.tsx
+// TheProblem: Hollywood stats + Filmio solution card
+import { TriangleAlert, Zap, Film } from "lucide-react";
+
+export function TheProblem() {
+  return (
+    <section className="bg-cinematic-problem">
+      <div className="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24">
+        <h2 className="font-display text-2xl md:text-4xl text-foreground text-center mb-12 font-extrabold tracking-tight">
+          Hollywood Bets Blind.{" "}
+          <span className="text-accent">Filmio Studios Doesn't.</span>
+        </h2>
+
+        {/* Stats row */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          {[
+            { icon: <TriangleAlert className="text-destructive" size={22} />, value: "75%", label: "of films lose money" },
+            { icon: <Zap className="text-destructive" size={22} />, value: "$200B+", label: "spent annually on unoriginal content" },
+            { icon: <Film className="text-destructive" size={22} />, value: "0%", label: "fan input on what gets made" },
+          ].map((item) => (
+            <div key={item.value} className="text-center">
+              <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center mx-auto mb-3">
+                {item.icon}
+              </div>
+              <div className="font-display text-3xl text-foreground mb-1">{item.value}</div>
+              <p className="font-body text-sm text-foreground/50">{item.label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Solution card */}
+        <div className="card-cinematic border border-primary/20 rounded-lg p-6 md:p-8">
+          <h3 className="font-display text-xl text-foreground mb-4 text-center">
+            Replacing Gut Feel with{" "}
+            <span className="text-primary">Data + Fan Power</span>
+          </h3>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Film.io Platform",
+                desc: "Audiences validate projects before a single dollar is spent.",
+              },
+              {
+                title: "Audience AI",
+                desc: "Predicts a film's commercial success using real audience data.",
+              },
+              {
+                title: "Film Fund + Studio",
+                desc: "Captures and produces only the best fan-approved projects.",
+              },
+            ].map((item) => (
+              <div key={item.title}>
+                <h4 className="font-body text-sm font-bold mb-1 text-filmio-sea">{item.title}</h4>
+                <p className="font-body text-sm text-foreground/50 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+--- client/src/components/TrackRecord.tsx
+// TrackRecord: Film credits image section
+import { Film } from "lucide-react";
+
+const DECK_IMG = "/manus-storage/deck-filmography-1024-C4PCCB2Y_8c7d4a78.webp";
+
+export function TrackRecord() {
+  return (
+    <section className="bg-cinematic-team border-t border-white/5">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-10 py-16 md:py-24">
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-filmio-sea/30 bg-filmio-sea/5 mb-4">
+            <Film className="h-3.5 w-3.5 text-filmio-sea" />
+            <span className="font-body text-[11px] uppercase tracking-[0.15em] text-filmio-sea">
+              Track Record
+            </span>
+          </div>
+          <h2 className="font-display text-2xl md:text-4xl text-foreground font-extrabold tracking-tight mb-3">
+            Our team has helped create some{" "}
+            <span className="text-filmio-sea">epic films and TV series</span>
+          </h2>
+          <p className="font-body text-base text-foreground/90 max-w-2xl mx-auto">
+            Decades of credits across studios, streamers, and award-winning independent productions.
+          </p>
+          <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mt-6" />
+        </div>
+
+        <figure className="mx-auto max-w-5xl rounded-lg md:rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-background/40">
+          <div className="relative w-full aspect-video">
+            <img
+              alt="Selected film and TV credits from the Filmio Studios team"
+              className="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+              src={DECK_IMG}
+            />
+          </div>
+        </figure>
+      </div>
+    </section>
+  );
+}
+--- client/src/components/FilmFund.tsx
+// FilmFund: Co-GP structure explanation with checklist
+import { Check } from "lucide-react";
+
+function BookCallBtn() {
+  const scrollToBooking = () => {
+    const el = document.getElementById("highlevel-embed");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+  return (
+    <button
+      onClick={scrollToBooking}
+      className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-body text-sm font-bold rounded-full hover:bg-primary/90 transition-colors"
+    >
+      Book a Call to Learn More
+    </button>
+  );
+}
+
+const FUND_POINTS = [
+  "Co-GPs receive a share of potential profits from every project financed by the Fund.",
+  "GP cash flow potential is projected at 5x+ and is uncapped.",
+  "Profit potential grows as the fund scales.",
+  "Fund-related expenses and depreciation may be eligible to offset your income tax.",
+];
+
+export function FilmFund() {
+  return (
+    <section className="bg-cinematic-fund">
+      <div className="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24">
+        <h2 className="font-display text-2xl md:text-4xl text-foreground text-center mb-4 font-extrabold tracking-tight">
+          How the Film Fund Provides{" "}
+          <span className="text-accent">Uncapped</span> Cash Flow
+        </h2>
+        <p className="font-body text-base text-foreground/50 text-center mb-10 max-w-xl mx-auto">
+          As an investor, you receive a Co-General Partner interest in the Filmio Studios Film Fund.
+        </p>
+
+        <div className="card-cinematic border border-white/5 rounded-lg p-6 md:p-8 space-y-4">
+          {FUND_POINTS.map((point) => (
+            <div key={point} className="flex items-start gap-3">
+              <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center">
+                <Check className="text-filmio-sea" size={12} />
+              </span>
+              <span className="font-body text-sm text-foreground/70 leading-relaxed">{point}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-10">
+          <BookCallBtn />
+        </div>
+      </div>
+    </section>
+  );
+}
+--- client/src/components/Roadmap.tsx
+// Roadmap: Alternating timeline from 2024 to 2028
+import { Rocket, CircleCheck } from "lucide-react";
+
+const MILESTONES = [
+  {
+    year: "2024",
+    done: true,
+    side: "left",
+    title: "Launch",
+    desc: "Film.io platform launch",
+  },
+  {
+    year: "2025",
+    done: true,
+    side: "right",
+    title: "Foundation & Ecosystem Readiness",
+    desc: "Platform & AI Proof of Concept · Filmio Studios launch",
+  },
+  {
+    year: "2026",
+    done: false,
+    now: true,
+    side: "left",
+    title: "Turn data and fandom into finance",
+    desc: "Filmio Advisor & Ambassador Network (FAAN) · Film Fund I and first validated slate",
+  },
+  {
+    year: "2027",
+    done: false,
+    side: "right",
+    title: "Close the loop from validation to audience delivery",
+    desc: "Filmio NOW Streaming Service",
+  },
+  {
+    year: "2028",
+    done: false,
+    side: "left",
+    title: "Global community entertainment ecosystem",
+    desc: "Expand to IP from any medium — books, games, and cross-media stories",
+  },
+];
+
+export function Roadmap() {
+  return (
+    <section className="bg-cinematic-team border-t border-white/5">
+      <div className="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-filmio-sea/30 bg-filmio-sea/5 mb-4">
+            <Rocket className="h-3.5 w-3.5 text-filmio-sea" />
+            <span className="font-body text-[11px] uppercase tracking-[0.15em] text-filmio-sea">
+              Roadmap
+            </span>
+          </div>
+          <h2 className="font-display text-2xl md:text-4xl text-foreground font-extrabold tracking-tight mb-3">
+            From platform launch to global ecosystem
+          </h2>
+          <p className="font-body text-base text-foreground/90 max-w-2xl mx-auto">
+            A staged plan that turns demand validation into a category-defining studio.
+          </p>
+          <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mt-6" />
+        </div>
+
+        <ol className="relative space-y-6 md:space-y-8 roadmap-line">
+          {MILESTONES.map((m) => (
+            <li
+              key={m.year}
+              className="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-8"
+            >
+              {/* Timeline dot */}
+              <span
+                className={`absolute left-2 md:left-1/2 md:-translate-x-1/2 top-2 h-5 w-5 rounded-full border-2 z-10 ${
+                  m.now
+                    ? "bg-primary border-primary animate-pulse"
+                    : m.done
+                    ? "bg-filmio-sea border-filmio-sea"
+                    : "bg-background border-white/30"
+                }`}
+              />
+
+              {/* Card */}
+              <div
+                className={`card-aurora-green border border-filmio-green/15 rounded-lg p-5 md:p-6 ${
+                  m.side === "left"
+                    ? "md:col-start-1 md:text-right md:mr-8"
+                    : "md:col-start-2 md:ml-8"
+                }`}
+              >
+                <div
+                  className={`flex items-center gap-2 mb-2 ${
+                    m.side === "left" ? "md:justify-end" : ""
+                  }`}
+                >
+                  <span className="font-display text-2xl md:text-3xl font-extrabold text-filmio-sea tabular-nums">
+                    {m.year}
+                  </span>
+                  {m.done && <CircleCheck className="h-4 w-4 text-filmio-sea" />}
+                  {m.now && (
+                    <span className="font-body text-[10px] uppercase tracking-wider text-primary px-2 py-0.5 rounded-full bg-primary/10 border border-primary/30">
+                      Now
+                    </span>
+                  )}
+                </div>
+                <h3 className="font-body text-sm md:text-base font-bold text-foreground mb-1">
+                  {m.title}
+                </h3>
+                <p className="font-body text-xs md:text-sm text-foreground leading-relaxed">
+                  {m.desc}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+--- client/src/components/TeamSection.tsx
+// TeamSection: 200+ Years of Combined Experience with team member cards
+
+const TEAM_ROW_1 = [
+  {
+    name: "Kevin Harrington",
+    role: "Original Shark · Shark Tank",
+    img: "/manus-storage/team-kevin-harrington-DZCWt3wK_ea9084d8.webp",
+    linkedin: "https://www.linkedin.com/in/kevinharrington1/",
+  },
+  {
+    name: "Jon Fitzgerald",
+    role: "Producer · Sundance Alum",
+    img: "/manus-storage/team-jon-fitzgerald-DFaV8sID_29f58957.webp",
+    linkedin: "https://www.linkedin.com/in/jonfitzgerald/",
+  },
+  {
+    name: "Patrick Read Johnson",
+    role: "Advisor",
+    img: "/manus-storage/team-patrick-read-johnson-iGhLim93_24b301a7.webp",
+    linkedin: "https://www.linkedin.com/in/patrickreadjohnson/",
+  },
+  {
+    name: "Bryan Hertz",
+    role: "Co-Founder & CEO · Filmio Studios",
+    img: "/manus-storage/team-bryan-hertz-Bof7DKPK_4acc6d64.webp",
+    linkedin: "https://www.linkedin.com/in/bryanhertz/",
+  },
+];
+
+const TEAM_ROW_2 = [
+  {
+    name: "Ian LeWinter",
+    role: "Co-Founder & President · Filmio Studios",
+    img: "/manus-storage/team-ian-lewinter-DrbAQnAY_12237639.webp",
+    linkedin: "https://www.linkedin.com/in/ianlewinter/",
+  },
+  {
+    name: "Chris Bosco",
+    role: "COO & Chief Strategy Officer · Filmio Studios",
+    img: "/manus-storage/team-chris-bosco-B6fePIt6_09319666.webp",
+    linkedin: "https://www.linkedin.com/in/boscochris/",
+  },
+  {
+    name: "Corey Hertz",
+    role: "Co-Founder & Chief Product Officer · Filmio Studios",
+    img: "/manus-storage/team-corey-hertz-CX98G9li_2b24f8c5.webp",
+    linkedin: "https://www.linkedin.com/in/corey-hertz-02651013/",
+  },
+  {
+    name: "Chris J. Davis",
+    role: "Co-Founder & CTO · Filmio Studios",
+    img: "/manus-storage/team-chris-davis-jzr2pCM1_adc461f5.webp",
+    linkedin: "https://www.linkedin.com/in/chrisjdavis/",
+  },
+  {
+    name: "Stipe Maric",
+    role: "Director · Filmio Studios",
+    img: "/manus-storage/team-stipe-maric-BVT-ac2d_1d5381a3.webp",
+    linkedin: "https://www.linkedin.com/in/stipemaric/",
+  },
+];
+
+const STUDIOS = [
+  { name: "Netflix", color: "rgb(229,9,20)" },
+  { name: "Disney", color: "rgb(17,60,207)" },
+  { name: "Universal", color: "rgb(255,215,0)" },
+  { name: "Amazon MGM", color: "rgb(0,168,225)" },
+  { name: "Sundance", color: "rgb(236,28,36)" },
+  { name: "SXSW", color: "rgb(245,166,35)" },
+];
+
+function TeamCard({ member }: { member: (typeof TEAM_ROW_1)[0] }) {
+  return (
+    <div className="flex flex-col items-center gap-3 rounded-lg border border-primary/20 card-aurora-blue p-6">
+      <div className="h-24 w-24 rounded-full overflow-hidden border-2 border-filmio-sea/30">
+        <img
+          alt={`${member.name} headshot`}
+          className="w-full h-full object-cover"
+          loading="lazy"
+          src={member.img}
+        />
+      </div>
+      <div className="text-center">
+        <a
+          className="font-body text-sm font-bold text-foreground hover:text-filmio-sea transition-colors"
+          href={member.linkedin}
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {member.name}
+        </a>
+        <p className="font-body text-xs text-foreground/40">{member.role}</p>
+      </div>
+    </div>
+  );
+}
+
+export function TeamSection() {
+  return (
+    <section className="bg-cinematic-team">
+      <div className="max-w-5xl mx-auto px-5 md:px-8 py-16 md:py-24 text-center">
+        <h2 className="font-display text-2xl md:text-4xl text-foreground mb-2 font-extrabold tracking-tight">
+          200+ Years of Combined Experience
+        </h2>
+        <p className="font-body text-base text-foreground/50 mb-4 max-w-xl mx-auto">
+          Our advisors and leadership bring experience from the world's top studios and platforms.
+        </p>
+        <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mb-10" />
+
+        {/* Studio logos row */}
+        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 mb-14">
+          <span className="font-body text-[10px] uppercase tracking-[0.15em] text-foreground/30">
+            Experience from
+          </span>
+          {STUDIOS.map((s) => (
+            <span
+              key={s.name}
+              className="font-display text-sm md:text-base font-bold tracking-wide opacity-50 hover:opacity-80 transition-opacity"
+              style={{ color: s.color }}
+            >
+              {s.name}
+            </span>
+          ))}
+        </div>
+
+        {/* Team rows */}
+        <div className="mb-14 space-y-4">
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-4">
+            {TEAM_ROW_1.map((m) => (
+              <TeamCard key={m.name} member={m} />
+            ))}
+          </div>
+          <div className="grid gap-4 grid-cols-2 sm:grid-cols-5">
+            {TEAM_ROW_2.map((m) => (
+              <TeamCard key={m.name} member={m} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+--- client/src/components/FilmioFooter.tsx
+// FilmioFooter: Legal disclaimers and copyright
+const LOGO_URL = "/manus-storage/filmio-logo-DxmMtisv_1d1121d3.avif";
+
+const DISCLAIMERS = [
+  "The information contained herein is for discussion and informational purposes only. The views expressed herein represent the opinions of Filmio Studios Inc. and its affiliates (collectively, the \"Company\"). This presentation does not constitute (and may not be construed to be) a solicitation or offer by the Company to buy or sell any Company securities or securities of any other person in any jurisdiction or an offer to sell an interest in funds managed by the Company. Securities may be sold only to investors who meet certain qualifications and only after review by the Company. All prospective investors should read the offering documents carefully, including investor qualifications, investment conditions, risk factors, minimum requirements, fees and expenses, tax concerns, and other pertinent information with respect to this investment.",
+  "The Company reserves the right to change or modify any of its opinions expressed herein at any time and for any reason and expressly disclaims any obligation to correct, update or revise the information contained herein or to otherwise provide any additional materials, or any liability which may arise from this presentation and any errors contained herein and/or omissions from any use of the contents of this presentation. No representation, warranty or undertaking, express or implied, is given as to the reliability, accuracy, fairness or completeness of the information or opinions contained herein.",
+  "The information and opinions included in this presentation constitute forward-looking statements, and you should be aware that all forward-looking statements, estimates and projections are inherently uncertain and subject to significant economic, competitive, and other uncertainties and contingencies and have been included solely for illustrative purposes. Actual results may differ materially from the information contained herein due to reasons that may or may not be foreseeable. No representation or warranty is made that the Company's investment processes or investment objectives will or are likely to be achieved or successful or that the Company's investments will make any profit or will not sustain losses.",
+  "Filmio Studios Film Fund is intended to be launched by Filmio Studios; however, its formation is not guaranteed. All references to fund participation should be understood as prospective and subject to change based on regulatory and market considerations. Investor's participation and returns in the fund relate to the 20% portion of their investment that is allocated to the fund.",
+  "Tax treatment varies based on individual circumstances. Investors should consult their tax professionals to fully understand how these benefits may apply.",
+  "$FAN Tokens are governance tokens that are used to participate in the Film.io ecosystem. $FAN are not an investment, and are being provided as a free perk from Filmio International Ltd, the owner of Film.io, to be used to participate in the Film.io platform. See Token Terms & Conditions and Terms of Service at Film.io for more information. $FAN Tokens issued in connection with the Filmio Studios SAFE will be locked to the Film.io platform until further notice by Filmio International Ltd.",
+];
+
+export function FilmioFooter() {
+  return (
+    <footer className="bg-cinematic-footer border-t border-foreground/[0.06]">
+      <div className="max-w-4xl mx-auto px-5 md:px-8 py-10">
+        <img alt="Filmio Studios" className="h-8 opacity-60" src={LOGO_URL} />
+        <div className="mt-6 space-y-4 font-body text-[10px] text-foreground/20 leading-relaxed">
+          {DISCLAIMERS.map((text, i) => (
+            <p key={i}>{text}</p>
+          ))}
+        </div>
+        <div className="mt-6 font-body text-[10px] text-foreground/25">
+          <p>
+            © 2025 Filmio Studios Inc. | All Rights Reserved |{" "}
+            <a href="/privacy-policy" className="underline hover:text-foreground/40 transition-colors">
+              Privacy Policy
+            </a>{" "}
+            |{" "}
+            <a href="/terms-of-use" className="underline hover:text-foreground/40 transition-colors">
+              Terms &amp; Conditions
+            </a>
+          </p>
+          <p className="mt-2 text-foreground/20">
+            8 The Green, Suite A<br />
+            Dover DE, 19901
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+--- client/src/components/MobileBookingBar.tsx
+// MobileBookingBar: Fixed bottom CTA bar for mobile devices only
+export function MobileBookingBar() {
+  const scrollToBooking = () => {
+    const el = document.getElementById("highlevel-embed");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-background/95 backdrop-blur-md border-t border-foreground/[0.08] px-4 py-3">
+      <button
+        onClick={scrollToBooking}
+        className="flex items-center justify-center w-full py-3.5 bg-primary text-primary-foreground font-body text-sm font-bold rounded-full hover:bg-primary/90 transition-colors"
+      >
+        Book a Discovery Call
+      </button>
+    </div>
+  );
+}
+--- client/src/components/ManusDialog.tsx
+import { useEffect, useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogTitle,
+} from "@/components/ui/dialog";
+
+interface ManusDialogProps {
+  title?: string;
+  logo?: string;
+  open?: boolean;
+  onLogin: () => void;
+  onOpenChange?: (open: boolean) => void;
+  onClose?: () => void;
+}
+
+export function ManusDialog({
+  title,
+  logo,
+  open = false,
+  onLogin,
+  onOpenChange,
+  onClose,
+}: ManusDialogProps) {
+  const [internalOpen, setInternalOpen] = useState(open);
+
+  useEffect(() => {
+    if (!onOpenChange) {
+      setInternalOpen(open);
+    }
+  }, [open, onOpenChange]);
+
+  const handleOpenChange = (nextOpen: boolean) => {
+    if (onOpenChange) {
+      onOpenChange(nextOpen);
+    } else {
+      setInternalOpen(nextOpen);
+    }
+
+    if (!nextOpen) {
+      onClose?.();
+    }
+  };
+
+  return (
+    <Dialog
+      open={onOpenChange ? open : internalOpen}
+      onOpenChange={handleOpenChange}
+    >
+      <DialogContent className="py-5 bg-[#f8f8f7] rounded-[20px] w-[400px] shadow-[0px_4px_11px_0px_rgba(0,0,0,0.08)] border border-[rgba(0,0,0,0.08)] backdrop-blur-2xl p-0 gap-0 text-center">
+        <div className="flex flex-col items-center gap-2 p-5 pt-12">
+          {logo ? (
+            <div className="w-16 h-16 bg-white rounded-xl border border-[rgba(0,0,0,0.08)] flex items-center justify-center">
+              <img src={logo} alt="Dialog graphic" className="w-10 h-10 rounded-md" />
+            </div>
+          ) : null}
+
+          {/* Title and subtitle */}
+          {title ? (
+            <DialogTitle className="text-xl font-semibold text-[#34322d] leading-[26px] tracking-[-0.44px]">
+              {title}
+            </DialogTitle>
+          ) : null}
+          <DialogDescription className="text-sm text-[#858481] leading-5 tracking-[-0.154px]">
+            Please login with Manus to continue
+          </DialogDescription>
+        </div>
+
+        <DialogFooter className="px-5 py-5">
+          {/* Login button */}
+          <Button
+            onClick={onLogin}
+            className="w-full h-10 bg-[#1a1a19] hover:bg-[#1a1a19]/90 text-white rounded-[10px] text-sm font-medium leading-5 tracking-[-0.154px]"
+          >
+            Login with Manus
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+--- client/src/const.ts
+export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
+
+// Generate login URL at runtime so redirect URI reflects the current origin.
+export const getLoginUrl = () => {
+  const oauthPortalUrl = import.meta.env.VITE_OAUTH_PORTAL_URL;
+  const appId = import.meta.env.VITE_APP_ID;
+  const redirectUri = `${window.location.origin}/api/oauth/callback`;
+  const state = btoa(redirectUri);
+
+  const url = new URL(`${oauthPortalUrl}/app-auth`);
+  url.searchParams.set("appId", appId);
+  url.searchParams.set("redirectUri", redirectUri);
+  url.searchParams.set("state", state);
+  url.searchParams.set("type", "signIn");
+
+  return url.toString();
+};
+--- shared/const.ts
+export const COOKIE_NAME = "app_session_id";
+export const ONE_YEAR_MS = 1000 * 60 * 60 * 24 * 365;
