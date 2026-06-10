@@ -627,3 +627,95 @@
     transform: none !important;
   }
 }
+
+/* Conversion-focused refinement: compact above-the-fold cockpit and stable workflow rendering */
+.conversion-cockpit {
+  min-height: auto;
+}
+
+.hero-media-column {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.hero-booking-shell {
+  min-height: 0;
+}
+
+.hero-calendar-frame {
+  height: clamp(31.25rem, 48vw, 34rem);
+  max-height: 34rem;
+}
+
+@media (min-width: 1024px) {
+  .conversion-cockpit {
+    max-height: none;
+  }
+
+  .hero-booking-shell {
+    height: 100%;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero-calendar-frame {
+    height: min(34rem, 70vh);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-calendar-frame {
+    height: 32rem;
+  }
+}
+
+.pipeline-grid {
+  grid-template-columns: repeat(auto-fit, minmax(8.75rem, 1fr));
+}
+
+.pipeline-step {
+  min-width: 0;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.pipeline-step p {
+  max-width: 100%;
+  line-height: 1.15;
+}
+
+@media (min-width: 768px) {
+  .pipeline-grid {
+    grid-template-columns: repeat(auto-fit, minmax(8.75rem, 1fr));
+  }
+
+  .pipeline-step {
+    min-height: 6.4rem;
+    padding-inline: 0.8rem;
+  }
+}
+
+@media (min-width: 1180px) {
+  .pipeline-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Readability refinement for the Vertov pipeline after visual QA */
+.pipeline-step {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.pipeline-step p {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+@media (min-width: 1180px) {
+  .pipeline-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
