@@ -4,15 +4,18 @@ type BrandLogoProps = {
   className?: string;
   imgClassName?: string;
   showName?: boolean;
+  extension?: "svg" | "png" | "jpg" | "jpeg";
 };
 
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 
-export function BrandLogo({ name, slug, className = "", imgClassName = "", showName = true }: BrandLogoProps) {
+export function BrandLogo({ name, slug, className = "", imgClassName = "", showName = true, extension = "svg" }: BrandLogoProps) {
+  const logoSrc = `${basePath}/brand-logos/${slug}.${extension}`;
+
   return (
     <div className={`brand-logo-tile ${className}`} aria-label={`${name} logo`} title={name}>
       <img
-        src={`${basePath}/brand-logos/${slug}.svg`}
+        src={logoSrc}
         alt={`${name} logo`}
         className={`brand-logo-img ${imgClassName}`}
         loading="lazy"

@@ -40,7 +40,7 @@ const investorCards: Card[] = [
   },
   {
     title: "Entertainment still lacks intelligence infrastructure",
-    body: "Finance has Bloomberg. Entertainment still has fragmented instinct and outdated gatekeeping.",
+    body: "Finance has Bloomberg, healthcare has IQVIA, aviation has Amadeus and Sabre, and real estate has CoStar. Film still lacks its category-defining intelligence layer.",
   },
   {
     title: "Filmio already has proprietary signal",
@@ -49,6 +49,110 @@ const investorCards: Card[] = [
   {
     title: "The market is massive",
     body: "Entertainment remains one of the world’s largest and most culturally influential industries.",
+  },
+];
+
+type IndustryAnalog = {
+  industry: string;
+  company: string;
+  slug: string;
+  extension?: "svg" | "png";
+  role: string;
+  revenue: string;
+  featured?: boolean;
+};
+
+const industryAnalogs: IndustryAnalog[] = [
+  {
+    industry: "Financial Markets",
+    company: "Bloomberg",
+    slug: "bloomberg",
+    role: "Terminal-grade market intelligence",
+    revenue: "$12B/yr",
+    featured: true,
+  },
+  {
+    industry: "Financial Markets",
+    company: "S&P Global",
+    slug: "sp-global",
+    role: "Ratings, indices, benchmarks, and market data",
+    revenue: "$13B/yr",
+    featured: true,
+  },
+  {
+    industry: "Financial Markets",
+    company: "MSCI",
+    slug: "msci",
+    role: "Institutional indices, analytics, and risk models",
+    revenue: "$2.6B/yr",
+    featured: true,
+  },
+  {
+    industry: "Risk & Insurance",
+    company: "Verisk",
+    slug: "verisk",
+    role: "Risk, actuarial, catastrophe, and claims intelligence",
+    revenue: "$3B/yr",
+    featured: true,
+  },
+  {
+    industry: "Healthcare & Pharma",
+    company: "IQVIA",
+    slug: "iqvia",
+    role: "Clinical trial tracking and global drug-sales ledger",
+    revenue: "$16.31B",
+  },
+  {
+    industry: "Automotive",
+    company: "Cox Automotive",
+    slug: "cox-automotive",
+    extension: "png",
+    role: "Wholesale auction pricing and vehicle retail ledger",
+    revenue: "$8B+",
+  },
+  {
+    industry: "Aviation & Travel",
+    company: "Amadeus",
+    slug: "amadeus",
+    role: "Global distribution system flight inventory",
+    revenue: "$5.8B+",
+  },
+  {
+    industry: "Commercial Real Estate",
+    company: "CoStar Group",
+    slug: "costar",
+    role: "Institutional property data, valuation, and leasing",
+    revenue: "$3.25B",
+  },
+  {
+    industry: "Aviation & Travel",
+    company: "Sabre",
+    slug: "sabre",
+    role: "Flight distribution network and booking infrastructure",
+    revenue: "$2.9B+",
+  },
+  {
+    industry: "Healthcare & Science",
+    company: "Clarivate",
+    slug: "clarivate",
+    role: "Patent mapping, IP tracking, and academic analytics",
+    revenue: "$2.6B",
+  },
+  {
+    industry: "Sports Data",
+    company: "Sportradar",
+    slug: "sportradar-wordmark",
+    extension: "png",
+    role: "Real-time league feeds for media and betting houses",
+    revenue: "$1.48B",
+  },
+  {
+    industry: "Automotive",
+    company: "CARFAX",
+    slug: "carfax",
+    extension: "png",
+    role: "Vehicle history and lifecycle ledger",
+    revenue: "$1.2B+",
   },
 ];
 
@@ -172,28 +276,77 @@ function BrandProofStrip() {
 }
 
 function EntertainmentLogoMap() {
+  const closestAnalogs = industryAnalogs.filter((analog) => analog.featured);
+  const broaderAnalogs = industryAnalogs.filter((analog) => !analog.featured);
+
   return (
-    <div className="entertainment-map rounded-[2rem] border border-white/10 p-5 md:p-6">
-      <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div>
-          <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-green">Entertainment reference set</p>
-          <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-white md:text-4xl">Every category gets an intelligence layer.</h3>
-          <p className="mt-4 font-body text-base leading-relaxed text-white/62">
-            Finance has Bloomberg. Entertainment still runs through fragmented studios, platforms, festivals, and fan channels. Filmio’s opportunity is to become the connective intelligence layer.
+    <div className="industry-analog-map rounded-[2rem] border border-white/10 p-5 md:p-7">
+      <div className="grid gap-6 xl:grid-cols-[0.82fr_1.18fr] xl:items-start">
+        <div className="industry-analog-copy">
+          <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-green">Category intelligence infrastructure</p>
+          <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-white md:text-[2.7rem]">
+            Bloomberg sells $12B/year of intelligence to financial markets. Entertainment has zero comparable infrastructure. We’re building it.
+          </h3>
+          <p className="mt-4 font-body text-base leading-relaxed text-white/66">
+            The strongest comp is not another studio. Across finance, healthcare, aviation, real estate, automotive, and sports, the durable companies are the ones that own the trusted ledger, distribution rails, and decision intelligence for a massive category. Filmio is building that missing layer for entertainment.
           </p>
+          <div className="mt-5 rounded-2xl border border-filmio-sea/20 bg-filmio-sea/8 p-4">
+            <p className="font-body text-sm font-bold uppercase tracking-[0.18em] text-filmio-sea">What exists today</p>
+            <p className="mt-2 font-body text-sm leading-relaxed text-white/62">
+              Film currently has tools that measure box office revenue and music consumption, but not a cross-market intelligence system for audience signal, project readiness, financing, production workflow, and distribution strategy.
+            </p>
+          </div>
         </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          <BrandLogo name="Bloomberg" slug="bloomberg" />
-          <BrandLogo name="Netflix" slug="netflix" />
-          <BrandLogo name="Disney" slug="disney" />
-          <BrandLogo name="Universal" slug="universal" />
-          <BrandLogo name="Amazon MGM" slug="amazon-mgm" />
-          <BrandLogo name="Sundance" slug="sundance" />
-          <BrandLogo name="SXSW" slug="sxsw" />
-          <BrandLogo name="Angel Studios" slug="angel-studios" />
+
+        <div className="space-y-4">
+          <div>
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <p className="font-body text-xs font-bold uppercase tracking-[0.18em] text-white/45">Closest analogs</p>
+              <span className="hidden h-px flex-1 bg-white/10 sm:block" />
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 2xl:grid-cols-4">
+              {closestAnalogs.map((analog) => (
+                <IndustryAnalogCard key={analog.company} analog={analog} featured />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <p className="font-body text-xs font-bold uppercase tracking-[0.18em] text-white/45">Same pattern in other industries</p>
+              <span className="hidden h-px flex-1 bg-white/10 sm:block" />
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-2 2xl:grid-cols-4">
+              {broaderAnalogs.map((analog) => (
+                <IndustryAnalogCard key={analog.company} analog={analog} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function IndustryAnalogCard({ analog, featured = false }: { analog: IndustryAnalog; featured?: boolean }) {
+  return (
+    <article className={`industry-analog-card ${featured ? "industry-analog-card-featured" : ""}`}>
+      <div className="industry-analog-logo-wrap">
+        <BrandLogo
+          name={analog.company}
+          slug={analog.slug}
+          extension={analog.extension ?? "svg"}
+          showName={false}
+          className="industry-analog-logo"
+        />
+      </div>
+      <div className="industry-analog-card-copy">
+        <p className="industry-analog-industry">{analog.industry}</p>
+        <h4>{analog.company}</h4>
+        <p>{analog.role}</p>
+      </div>
+      <div className="industry-analog-revenue">{analog.revenue}</div>
+    </article>
   );
 }
 
