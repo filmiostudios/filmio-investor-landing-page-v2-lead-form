@@ -1,5 +1,6 @@
 import { FilmioLogo } from "@/components/FilmioLogo";
-import { Link } from "wouter";
+
+const pagePath = (path: string) => `${import.meta.env.BASE_URL.replace(/\/$/, "")}${path}`;
 
 const PAGE_COPY = {
   privacy: {
@@ -70,9 +71,9 @@ export default function LegalPage({ kind }: LegalPageProps) {
   return (
     <main className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-3xl px-5 py-10 md:px-8 md:py-16">
-        <Link href="/" className="inline-flex">
+        <a href={pagePath("/")} className="inline-flex">
           <FilmioLogo />
-        </Link>
+        </a>
         <article className="mt-10 rounded-2xl border border-white/10 bg-white/[0.035] p-6 shadow-2xl md:p-10">
           <p className="font-body text-xs uppercase tracking-[0.18em] text-filmio-sea">{copy.updated}</p>
           <h1 className="mt-3 font-display text-3xl font-extrabold tracking-tight md:text-5xl">
@@ -87,12 +88,12 @@ export default function LegalPage({ kind }: LegalPageProps) {
               </section>
             ))}
           </div>
-          <Link
-            href="/"
+          <a
+            href={pagePath("/")}
             className="mt-10 inline-flex rounded-full bg-primary px-5 py-2 font-body text-xs font-bold text-primary-foreground transition-colors hover:bg-primary/90"
           >
             Return to Investor Page
-          </Link>
+          </a>
         </article>
       </div>
     </main>

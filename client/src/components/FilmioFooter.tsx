@@ -10,6 +10,8 @@ const DISCLAIMERS = [
   "$FAN Tokens are governance tokens that are used to participate in the Film.io ecosystem. $FAN are not an investment, and are being provided as a free perk from Filmio International Ltd, the owner of Film.io, to be used to participate in the Film.io platform. See Token Terms & Conditions and Terms of Service at Film.io for more information. $FAN Tokens issued in connection with the Filmio Studios SAFE will be locked to the Film.io platform until further notice by Filmio International Ltd.",
 ];
 
+const pagePath = (path: string) => `${import.meta.env.BASE_URL.replace(/\/$/, "")}${path}`;
+
 export function FilmioFooter() {
   return (
     <footer className="bg-cinematic-footer border-t border-foreground/[0.06]">
@@ -23,11 +25,11 @@ export function FilmioFooter() {
         <div className="mt-6 font-body text-[10px] text-foreground/25">
           <p>
             © 2025 Filmio Studios Inc. | All Rights Reserved |{" "}
-            <a href="/privacy-policy" className="underline hover:text-foreground/40 transition-colors">
+            <a href={pagePath("/privacy-policy")} className="underline hover:text-foreground/40 transition-colors">
               Privacy Policy
             </a>{" "}
             |{" "}
-            <a href="/terms-of-use" className="underline hover:text-foreground/40 transition-colors">
+            <a href={pagePath("/terms-of-use")} className="underline hover:text-foreground/40 transition-colors">
               Terms &amp; Conditions
             </a>
           </p>
