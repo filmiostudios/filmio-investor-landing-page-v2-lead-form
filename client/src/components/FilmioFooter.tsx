@@ -15,9 +15,14 @@ const pagePath = (path: string) => `${import.meta.env.BASE_URL.replace(/\/$/, ""
 export function FilmioFooter() {
   return (
     <footer className="bg-cinematic-footer border-t border-foreground/[0.06]">
-      <div className="max-w-4xl mx-auto px-5 md:px-8 py-10">
-        <FilmioLogo muted />
-        <div className="mt-6 space-y-4 font-body text-[10px] text-foreground/20 leading-relaxed">
+      <div className="mx-auto max-w-5xl px-5 py-10 md:px-8">
+        <div className="flex flex-col gap-4 border-b border-white/10 pb-6 md:flex-row md:items-center md:justify-between">
+          <FilmioLogo muted />
+          <div className="max-w-md font-body text-sm leading-relaxed text-white/38">
+            Filmio Studios is building the AI intelligence infrastructure for the future of entertainment. Qualified investors can review the deck and book a discovery call above.
+          </div>
+        </div>
+        <div className="mt-6 space-y-4 font-body text-[10px] leading-relaxed text-foreground/20">
           {DISCLAIMERS.map((text, i) => (
             <p key={i}>{text}</p>
           ))}

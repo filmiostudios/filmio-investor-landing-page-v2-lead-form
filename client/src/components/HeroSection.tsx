@@ -1,3 +1,5 @@
+import { BrandLogo } from "@/components/BrandLogo";
+
 const BOOKING_URL = "https://api.leadconnectorhq.com/widget/bookings/filmio-studios-discovery";
 const HEYGEN_EMBED_URL = "https://app.heygen.com/embeds/7a02df82a8944c69886006bdb46102ce";
 const CANVA_EMBED_URL = "https://www.canva.com/design/DAHLXrRRU2c/fd2PByLcd1haA-Ux9Fq-rA/view?embed";
@@ -6,7 +8,7 @@ const CANVA_DECK_URL =
 
 function VideoEmbed() {
   return (
-    <div className="media-frame group overflow-hidden rounded-[1.45rem] border border-filmio-sea/20 bg-black/45 shadow-2xl shadow-filmio-sea/10 md:rounded-[1.75rem]">
+    <div className="media-frame group overflow-hidden rounded-[1.35rem] border border-filmio-sea/20 bg-black/45 shadow-2xl shadow-filmio-sea/10 md:rounded-[1.6rem]">
       <div className="relative aspect-video w-full">
         <iframe
           className="absolute inset-0 h-full w-full"
@@ -23,8 +25,8 @@ function VideoEmbed() {
 
 function CanvaEmbed({ compact = false }: { compact?: boolean }) {
   return (
-    <div className={compact ? "mt-4" : "mt-8"}>
-      <div className="media-frame relative h-0 w-full overflow-hidden rounded-[1.35rem] border border-white/10 bg-white/[0.03] shadow-lg md:rounded-[1.5rem]" style={{ paddingTop: "56.25%" }}>
+    <div className={compact ? "mt-3" : "mt-8"}>
+      <div className="media-frame relative h-0 w-full overflow-hidden rounded-[1.25rem] border border-white/10 bg-white/[0.03] shadow-lg md:rounded-[1.45rem]" style={{ paddingTop: "56.25%" }}>
         <iframe
           loading="lazy"
           className="absolute left-0 top-0 h-full w-full border-0 p-0"
@@ -48,7 +50,7 @@ function CanvaEmbed({ compact = false }: { compact?: boolean }) {
 
 function HeroBookingPanel() {
   return (
-    <div className="booking-shell hero-booking-shell flex h-full w-full flex-col overflow-hidden rounded-[1.65rem] border border-white/10 p-3 md:rounded-[1.85rem] md:p-4" id="highlevel-embed">
+    <div className="booking-shell hero-booking-shell flex h-full w-full flex-col overflow-hidden rounded-[1.55rem] border border-white/10 p-3 md:rounded-[1.7rem] md:p-4" id="highlevel-embed">
       <div className="mb-3 rounded-2xl border border-filmio-sea/20 bg-filmio-sea/5 px-4 py-3 text-center">
         <p className="font-body text-xs font-bold uppercase tracking-[0.22em] text-filmio-sea">
           Book a 20-Minute Investor Discovery Call
@@ -92,8 +94,14 @@ export function HeroSection() {
     "A system that compounds with every outcome",
   ];
 
+  const steps = [
+    { label: "01", title: "Watch", body: "5-minute thesis briefing" },
+    { label: "02", title: "Scan", body: "Investor deck below the video" },
+    { label: "03", title: "Book", body: "20-minute discovery call" },
+  ];
+
   return (
-    <section className="hero-stage relative overflow-hidden" id="hero">
+    <section className="hero-stage hero-stage-conversion relative overflow-hidden" id="hero">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-1/2 top-10 h-[760px] w-[760px] -translate-x-1/2 rounded-full bg-primary/10 blur-[140px]" />
         <div className="absolute left-8 top-28 h-72 w-72 rounded-full bg-filmio-green/10 blur-[110px]" />
@@ -101,8 +109,8 @@ export function HeroSection() {
         <div className="hero-grid-overlay" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-12 pt-7 md:px-10 md:pb-16 md:pt-10">
-        <div className="mx-auto mb-6 max-w-6xl text-center md:mb-8">
+      <div className="relative z-10 mx-auto max-w-[1420px] px-5 pb-10 pt-6 md:px-10 md:pb-14 md:pt-8">
+        <div className="mx-auto mb-5 max-w-6xl text-center md:mb-6">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-filmio-green/25 bg-filmio-green/10 px-4 py-1.5 shadow-[0_0_35px_rgba(117,246,158,0.08)]">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-filmio-green opacity-75" />
@@ -113,7 +121,7 @@ export function HeroSection() {
             </span>
           </div>
 
-          <h1 className="mx-auto max-w-6xl font-display text-[clamp(2.4rem,5.55vw,5.75rem)] font-extrabold leading-[0.9] tracking-tight text-foreground">
+          <h1 className="mx-auto max-w-6xl font-display text-[clamp(2.35rem,5.2vw,5.35rem)] font-extrabold leading-[0.9] tracking-tight text-foreground">
             The Stories That Shape Culture Shouldn’t Be Chosen by Guesswork.
           </h1>
           <p className="mx-auto mt-4 max-w-4xl font-body text-base leading-relaxed text-white/68 md:text-xl">
@@ -121,7 +129,19 @@ export function HeroSection() {
           </p>
         </div>
 
-        <div className="hero-command-center conversion-cockpit grid gap-5 rounded-[2rem] border border-white/10 p-3 md:p-4 lg:grid-cols-[minmax(0,0.98fr)_minmax(420px,1fr)] lg:items-stretch">
+        <div className="hero-action-strip mx-auto mb-5 grid max-w-5xl gap-3 md:grid-cols-3">
+          {steps.map((step) => (
+            <div key={step.label} className="hero-action-step">
+              <span>{step.label}</span>
+              <div>
+                <strong>{step.title}</strong>
+                <p>{step.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="hero-command-center conversion-cockpit pitch-cockpit grid gap-4 rounded-[2rem] border border-white/10 p-3 md:p-4 xl:grid-cols-[minmax(0,0.92fr)_minmax(440px,0.82fr)] xl:items-stretch">
           <div className="hero-media-column p-1 md:p-2">
             <div className="mb-3 flex items-center justify-between gap-4">
               <div>
@@ -132,20 +152,31 @@ export function HeroSection() {
                 Vertov / Filmio
               </span>
             </div>
-            <VideoEmbed />
-            <CanvaEmbed compact />
+            <div className="hero-media-stack-compact">
+              <VideoEmbed />
+              <CanvaEmbed compact />
+            </div>
           </div>
 
           <HeroBookingPanel />
         </div>
 
-        <div className="mx-auto mt-5 grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="hero-proof-row mx-auto mt-5 grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {supportLines.map((line) => (
             <div key={line} className="hero-chip justify-center text-center">
               <span />
               {line}
             </div>
           ))}
+        </div>
+
+        <div className="hero-comparable-logos mx-auto mt-5 grid max-w-5xl gap-2 sm:grid-cols-2 lg:grid-cols-[1.25fr_repeat(5,minmax(0,1fr))] lg:items-center">
+          <p className="hero-comparable-label font-body text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">Vertical AI value signals</p>
+          <BrandLogo name="OpenAI" slug="openai" className="brand-logo-hero-signal" />
+          <BrandLogo name="Anthropic" slug="anthropic" className="brand-logo-hero-signal" />
+          <BrandLogo name="Cursor" slug="cursor" className="brand-logo-hero-signal" />
+          <BrandLogo name="Harvey" slug="harvey" className="brand-logo-hero-signal brand-logo-wordmark" />
+          <BrandLogo name="Sierra" slug="sierra" className="brand-logo-hero-signal brand-logo-wordmark" />
         </div>
       </div>
     </section>

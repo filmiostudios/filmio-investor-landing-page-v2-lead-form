@@ -1,4 +1,5 @@
 import { AuroraBackground } from "@/components/AuroraBackground";
+import { BrandLogo } from "@/components/BrandLogo";
 import { FilmioFooter } from "@/components/FilmioFooter";
 import { FilmioNav } from "@/components/FilmioNav";
 import { HeroSection, VideoEmbed, CanvaEmbed, BOOKING_URL } from "@/components/HeroSection";
@@ -147,6 +148,75 @@ function BulletList({ bullets, tone = "green" }: { bullets: string[]; tone?: "gr
   );
 }
 
+function BrandProofStrip() {
+  return (
+    <div className="brand-proof-panel rounded-[2rem] border border-white/10 p-5 md:p-6">
+      <div className="mb-5 flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-sea">Market proof</p>
+          <h3 className="mt-2 font-display text-2xl font-extrabold text-white md:text-3xl">The pattern is already visible in adjacent markets.</h3>
+        </div>
+        <p className="max-w-xl font-body text-sm leading-relaxed text-white/56">
+          AI value is accruing to platforms that own specialized workflows, proprietary signal, and the operating layer for a category.
+        </p>
+      </div>
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+        <BrandLogo name="OpenAI" slug="openai" />
+        <BrandLogo name="Anthropic" slug="anthropic" />
+        <BrandLogo name="Cursor" slug="cursor" />
+        <BrandLogo name="Harvey" slug="harvey" />
+        <BrandLogo name="Sierra" slug="sierra" />
+      </div>
+    </div>
+  );
+}
+
+function EntertainmentLogoMap() {
+  return (
+    <div className="entertainment-map rounded-[2rem] border border-white/10 p-5 md:p-6">
+      <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div>
+          <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-green">Entertainment reference set</p>
+          <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-white md:text-4xl">Every category gets an intelligence layer.</h3>
+          <p className="mt-4 font-body text-base leading-relaxed text-white/62">
+            Finance has Bloomberg. Entertainment still runs through fragmented studios, platforms, festivals, and fan channels. Filmio’s opportunity is to become the connective intelligence layer.
+          </p>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <BrandLogo name="Bloomberg" slug="bloomberg" />
+          <BrandLogo name="Netflix" slug="netflix" />
+          <BrandLogo name="Disney" slug="disney" />
+          <BrandLogo name="Universal" slug="universal" />
+          <BrandLogo name="Amazon MGM" slug="amazon-mgm" />
+          <BrandLogo name="Sundance" slug="sundance" />
+          <BrandLogo name="SXSW" slug="sxsw" />
+          <BrandLogo name="Angel Studios" slug="angel-studios" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ConversionPromisePanel() {
+  return (
+    <div className="conversion-promise rounded-[2rem] border border-filmio-sea/20 p-6 md:p-7">
+      <div className="grid gap-5 md:grid-cols-3">
+        {[
+          ["Bring the deck", "Review the thesis, round structure, and use of proceeds with an executive."],
+          ["Pressure-test the moat", "Discuss proprietary audience signal, Vertov, GoScore, and the capital layer."],
+          ["Decide next steps", "Leave with a clear view of whether the Filmio opportunity merits deeper diligence."],
+        ].map(([title, body], index) => (
+          <div key={title} className="conversion-promise-step">
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function BookingPanel({ compact = false }: { compact?: boolean }) {
   return (
     <div className="booking-shell w-full overflow-hidden rounded-[1.75rem] border border-white/10 p-4 shadow-2xl shadow-black/30 md:p-5">
@@ -180,17 +250,17 @@ function BookingPanel({ compact = false }: { compact?: boolean }) {
 
 function ProblemConstellation() {
   return (
-    <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
-      <div className="spotlight-panel relative overflow-hidden rounded-[2rem] border border-white/10 p-8 md:p-10">
+    <div className="problem-constellation rounded-[2rem] border border-white/10 p-5 md:p-7">
+      <div className="problem-hero-card spotlight-panel relative overflow-hidden rounded-[1.6rem] border border-white/10 p-7 md:p-9">
         <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-filmio-pink/10 blur-3xl" />
         <p className="relative font-display text-3xl font-extrabold leading-tight text-white md:text-5xl">
           Hollywood has optimized the spend. Filmio is optimizing the signal.
         </p>
-        <p className="relative mt-6 max-w-2xl font-body text-lg leading-relaxed text-white/64">
+        <p className="relative mt-5 max-w-2xl font-body text-lg leading-relaxed text-white/64">
           Filmio was built to reverse that sequence.
         </p>
       </div>
-      <div className="grid gap-4">
+      <div className="problem-proof-grid mt-5 grid gap-4 md:grid-cols-2">
         {problemBlocks.map((block, index) => (
           <div key={block} className="problem-row group">
             <span className="problem-index">{String(index + 1).padStart(2, "0")}</span>
@@ -266,18 +336,37 @@ function ValuationLandscape() {
           <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-sea">First wave</p>
           <h3 className="mt-3 font-display text-3xl font-extrabold text-white">Foundation AI scale</h3>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            {["OpenAI: ~$1 Trillion", "Anthropic: ~$1 Trillion"].map((item) => (
-              <div key={item} className="metric-tile text-filmio-sea">{item}</div>
-            ))}
+            <div className="metric-tile metric-logo-tile text-filmio-sea">
+              <BrandLogo name="OpenAI" slug="openai" showName={false} className="metric-brand-logo" />
+              <span>OpenAI</span>
+              <strong>~$1 Trillion</strong>
+            </div>
+            <div className="metric-tile metric-logo-tile text-filmio-sea">
+              <BrandLogo name="Anthropic" slug="anthropic" showName={false} className="metric-brand-logo" />
+              <span>Anthropic</span>
+              <strong>~$1 Trillion</strong>
+            </div>
           </div>
         </div>
         <div className="valuation-panel valuation-green rounded-[2rem] border border-white/10 p-7">
           <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-green">Second wave</p>
           <h3 className="mt-3 font-display text-3xl font-extrabold text-white">Vertical workflow ownership</h3>
           <div className="mt-6 grid gap-3">
-            {["Cursor: $60 Billion", "Harvey: $11 Billion", "Sierra: $10 Billion"].map((item) => (
-              <div key={item} className="metric-tile text-filmio-green">{item}</div>
-            ))}
+            <div className="metric-tile metric-logo-tile text-filmio-green">
+              <BrandLogo name="Cursor" slug="cursor" showName={false} className="metric-brand-logo" />
+              <span>Cursor</span>
+              <strong>$60 Billion</strong>
+            </div>
+            <div className="metric-tile metric-logo-tile text-filmio-green">
+              <BrandLogo name="Harvey" slug="harvey" showName={false} className="metric-brand-logo metric-brand-wordmark" />
+              <span>Harvey</span>
+              <strong>$11 Billion</strong>
+            </div>
+            <div className="metric-tile metric-logo-tile text-filmio-green">
+              <BrandLogo name="Sierra" slug="sierra" showName={false} className="metric-brand-logo metric-brand-wordmark" />
+              <span>Sierra</span>
+              <strong>$10 Billion</strong>
+            </div>
           </div>
         </div>
       </div>
@@ -329,9 +418,15 @@ export default function Home() {
 
         <SectionShell sectionNumber="06" eyebrow="Section 6" title="AI Valuations Are Exploding" className="bg-cinematic-team/70">
           <ValuationLandscape />
+          <div className="mt-8">
+            <BrandProofStrip />
+          </div>
         </SectionShell>
 
         <SectionShell sectionNumber="07" eyebrow="Section 7" title="Why Investors Should Care Now" className="bg-cinematic-highlights/70">
+          <div className="mb-8">
+            <EntertainmentLogoMap />
+          </div>
           <div className="grid gap-5 md:grid-cols-2">
             {investorCards.map((card, index) => <PremiumCard key={card.title} card={card} index={index} />)}
           </div>
@@ -344,6 +439,9 @@ export default function Home() {
           className="bg-cinematic-cta/80"
           intro="Start with the short briefing, then book a call to review the Filmio opportunity in more detail."
         >
+          <div className="mb-8">
+            <ConversionPromisePanel />
+          </div>
           <div className="grid gap-8 lg:grid-cols-[1fr_1.05fr] lg:items-start">
             <div className="media-stack">
               <VideoEmbed />

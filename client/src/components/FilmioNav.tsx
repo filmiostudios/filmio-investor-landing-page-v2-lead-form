@@ -8,12 +8,17 @@ export function FilmioNav() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-md border-b border-foreground/[0.06]">
-      <div className="max-w-6xl mx-auto px-4 md:px-8 h-14 flex items-center justify-between">
+    <nav className="sticky top-0 z-50 border-b border-foreground/[0.06] bg-background/90 backdrop-blur-xl">
+      <div className="mx-auto flex h-16 max-w-[1420px] items-center justify-between px-4 md:px-8">
         <FilmioLogo />
+        <div className="hidden items-center gap-5 font-body text-[11px] font-bold uppercase tracking-[0.18em] text-white/42 md:flex">
+          <span>Briefing</span>
+          <span>Deck</span>
+          <span>Discovery Call</span>
+        </div>
         <button
           onClick={scrollToBooking}
-          className="inline-flex items-center px-5 py-2 bg-primary text-primary-foreground font-body text-xs font-bold rounded-full hover:bg-primary/90 transition-colors"
+          className="inline-flex items-center rounded-full border border-filmio-sea/30 bg-primary px-5 py-2.5 font-body text-xs font-bold text-primary-foreground shadow-[0_0_24px_rgba(0,174,239,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_0_34px_rgba(0,174,239,0.36)]"
         >
           Book a Call
         </button>
