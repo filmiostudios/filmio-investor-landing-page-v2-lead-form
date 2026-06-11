@@ -148,11 +148,11 @@ function HeroBookingPanel() {
         <iframe
           scrolling="yes"
           src={BOOKING_URL}
-          className="block h-full min-h-[620px] w-full border-0"
+          className="hero-calendar-iframe block w-full border-0"
           title="Book a Discovery Call"
         />
       </div>
-      <div className="mt-auto pt-3 text-center">
+      <div className="hero-booking-link mt-auto pt-2 text-center">
         <a
           className="inline-flex rounded-full border border-filmio-sea/30 bg-filmio-sea/10 px-4 py-2 font-body text-xs font-bold text-filmio-sea transition-all duration-300 hover:-translate-y-0.5 hover:bg-filmio-sea/20 hover:shadow-[0_0_24px_rgba(0,174,239,0.18)]"
           href={BOOKING_URL}
@@ -162,7 +162,7 @@ function HeroBookingPanel() {
           Open booking calendar in a new tab
         </a>
       </div>
-      <p className="mt-2 text-center font-body text-[10px] text-white/30 md:text-xs">
+      <p className="hero-timezone-note mt-1.5 text-center font-body text-[10px] text-white/30 md:text-xs">
         Times shown in your local timezone · Confirmation sent instantly
       </p>
     </div>
@@ -211,7 +211,7 @@ export function HeroSection() {
         </div>
 
         <div className="hero-comparable-logos mx-auto mt-5 grid max-w-5xl gap-2 sm:grid-cols-2 lg:grid-cols-[1.25fr_repeat(5,minmax(0,1fr))] lg:items-center">
-          <p className="hero-comparable-label font-body text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">Vertical AI value signals</p>
+          <p className="hero-comparable-label font-body text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">Frontier AI and Vertical AI value signals</p>
           {[
             ["OpenAI", "~$1T"],
             ["Anthropic", "~$1T"],

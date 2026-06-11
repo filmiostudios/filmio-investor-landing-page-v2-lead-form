@@ -1,9 +1,14 @@
 import { AuroraBackground } from "@/components/AuroraBackground";
 import { BrandLogo } from "@/components/BrandLogo";
 import { FilmioFooter } from "@/components/FilmioFooter";
+import { InvestmentTerms } from "@/components/InvestmentTerms";
 import { FilmioNav } from "@/components/FilmioNav";
-import { HeroSection, VideoEmbed, CanvaEmbed, BOOKING_URL } from "@/components/HeroSection";
+import { HeroSection, CanvaEmbed } from "@/components/HeroSection";
 import { MobileBookingBar } from "@/components/MobileBookingBar";
+import { Roadmap } from "@/components/Roadmap";
+import { TeamSection } from "@/components/TeamSection";
+import { TheRaise } from "@/components/TheRaise";
+import { TrackRecord } from "@/components/TrackRecord";
 
 type Card = {
   title: string;
@@ -334,56 +339,6 @@ function IndustryAnalogCard({ analog, featured = false }: { analog: IndustryAnal
   );
 }
 
-function ConversionPromisePanel() {
-  return (
-    <div className="conversion-promise rounded-[2rem] border border-filmio-sea/20 p-6 md:p-7">
-      <div className="grid gap-5 md:grid-cols-3">
-        {[
-          ["Bring the deck", "Review the thesis, round structure, and use of proceeds with an executive."],
-          ["Pressure-test the moat", "Discuss proprietary audience signal, Vertov, GoScore, and the capital layer."],
-          ["Decide next steps", "Leave with a clear view of whether the Filmio opportunity merits deeper diligence."],
-        ].map(([title, body], index) => (
-          <div key={title} className="conversion-promise-step">
-            <span>{String(index + 1).padStart(2, "0")}</span>
-            <h3>{title}</h3>
-            <p>{body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function BookingPanel({ compact = false }: { compact?: boolean }) {
-  return (
-    <div className="booking-shell w-full overflow-hidden rounded-[1.75rem] border border-white/10 p-4 shadow-2xl shadow-black/30 md:p-5">
-      <div className="mb-4 rounded-2xl border border-filmio-sea/20 bg-filmio-sea/5 px-4 py-3 text-center">
-        <p className="font-body text-xs font-bold uppercase tracking-[0.22em] text-filmio-sea">Book a 20-Minute Investor Discovery Call</p>
-        <p className="mx-auto mt-2 max-w-xl font-body text-sm leading-relaxed text-white/58">
-          Schedule a short call to review the Filmio investor deck, round details, and AI intelligence infrastructure strategy.
-        </p>
-      </div>
-      <div className="w-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]" style={{ maxHeight: compact ? 620 : 700 }}>
-        <iframe
-          scrolling="yes"
-          src={BOOKING_URL}
-          style={{ width: "100%", border: "none", height: compact ? 590 : 650, display: "block" }}
-          title="Book a Discovery Call"
-        />
-      </div>
-      <div className="mt-4 text-center">
-        <a
-          className="inline-flex rounded-full border border-filmio-sea/30 bg-filmio-sea/10 px-4 py-2 font-body text-xs font-bold text-filmio-sea transition-all duration-300 hover:-translate-y-0.5 hover:bg-filmio-sea/20 hover:shadow-[0_0_24px_rgba(0,174,239,0.18)]"
-          href={BOOKING_URL}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Open booking calendar in a new tab
-        </a>
-      </div>
-    </div>
-  );
-}
 
 function ProblemConstellation() {
   return (
@@ -409,7 +364,6 @@ function ProblemConstellation() {
 function VertovPipeline() {
   const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
   const vertovVideoSrc = `${basePath}/videos/vertov-agentic-movie-workflow-demo.mp4`;
-
   return (
     <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
       <div className="spotlight-panel rounded-[2rem] border border-white/10 p-8">
@@ -529,63 +483,23 @@ export default function Home() {
           title="AI Valuations Are Exploding"
           className="bg-cinematic-team/70"
           intro="The first wave created AI giants. The second wave is creating vertical AI category leaders."
-          introClassName="section-subheading-emphasis whitespace-nowrap"
+          introClassName="section-subheading-emphasis"
         >
           <ValuationLandscape />
         </SectionShell>
 
-        <SectionShell
-          title="Watch the Briefing. Book the Call."
-          className="bg-cinematic-cta/80"
-          intro="Start with the short briefing, then book a call to review the Filmio opportunity in more detail."
-        >
-          <div className="mb-8">
-            <ConversionPromisePanel />
-          </div>
-          <div className="grid gap-8 lg:grid-cols-[1fr_1.05fr] lg:items-start">
-            <div className="media-stack">
-              <VideoEmbed />
-            </div>
-            <BookingPanel />
-          </div>
-        </SectionShell>
+        <TeamSection />
+        <TrackRecord />
+        <Roadmap />
+        <TheRaise />
 
-        <SectionShell sectionNumber="09" eyebrow="Section 9" title="Review the Investor Deck" className="bg-cinematic-fund/70">
+        <SectionShell title="Review the Investor Deck" className="bg-cinematic-fund/70">
           <div className="deck-shell rounded-[2rem] border border-white/10 p-4 md:p-6">
             <CanvaEmbed />
           </div>
         </SectionShell>
 
-        <SectionShell sectionNumber="10" eyebrow="Section 10" title="The Investment Frame" className="bg-cinematic-why/70">
-          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div className="spotlight-panel rounded-[2rem] border border-white/10 p-8">
-              <p className="font-body text-xl leading-relaxed text-white/70 md:text-2xl">
-                This round funds the next phase of development of Filmio&apos;s AI Intelligence Infrastructure, Filmio Studios and the Filmio Studios Film Fund.
-              </p>
-            </div>
-            <BulletList bullets={investmentBullets} tone="sea" />
-          </div>
-        </SectionShell>
-
-        <SectionShell sectionNumber="11" eyebrow="Section 11" title="The Endgame" className="bg-cinematic-cta/80">
-          <div className="finale-panel rounded-[2.25rem] border border-white/10 p-8 md:p-10">
-            <p className="max-w-4xl font-body text-xl leading-relaxed text-white/70">
-              A future where stories move from idea to audience with intelligence, speed, and real market validation.
-            </p>
-            <div className="mt-8">
-              <BulletList bullets={endgameBullets} />
-            </div>
-            <p className="mt-10 max-w-4xl font-display text-3xl font-extrabold leading-tight text-white md:text-5xl">
-              Filmio is building the intelligence infrastructure for the future of entertainment.
-            </p>
-            <button
-              className="mt-8 rounded-full border border-filmio-sea/30 bg-filmio-sea/10 px-6 py-3 font-body text-sm font-bold text-filmio-sea transition-all duration-300 hover:-translate-y-0.5 hover:bg-filmio-sea/20 hover:shadow-[0_0_28px_rgba(0,174,239,0.2)]"
-              onClick={() => document.getElementById("highlevel-embed")?.scrollIntoView({ behavior: "smooth", block: "start" })}
-            >
-              Book an Investor Discovery Call
-            </button>
-          </div>
-        </SectionShell>
+        <InvestmentTerms />
 
         <FilmioFooter />
       </div>

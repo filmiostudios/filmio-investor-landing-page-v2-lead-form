@@ -1,138 +1,163 @@
-// TeamSection: 200+ Years of Combined Experience with team member cards
+type TeamMember = {
+  name: string;
+  title: string;
+  description: string;
+  linkedin?: string;
+};
 
-const TEAM_ROW_1 = [
-  {
-    name: "Kevin Harrington",
-    role: "Original Shark · Shark Tank",
-    linkedin: "https://www.linkedin.com/in/kevinharrington1/",
-  },
-  {
-    name: "Jon Fitzgerald",
-    role: "Producer · Sundance Alum",
-    linkedin: "https://www.linkedin.com/in/jonfitzgerald/",
-  },
-  {
-    name: "Patrick Read Johnson",
-    role: "Advisor",
-    linkedin: "https://www.linkedin.com/in/patrickreadjohnson/",
-  },
+const TOP_ROW: TeamMember[] = [
   {
     name: "Bryan Hertz",
-    role: "Co-Founder & CEO · Filmio Studios",
-    linkedin: "https://www.linkedin.com/in/bryanhertz/",
-  },
-];
-
-const TEAM_ROW_2 = [
-  {
-    name: "Ian LeWinter",
-    role: "Co-Founder & President · Filmio Studios",
-    linkedin: "https://www.linkedin.com/in/ianlewinter/",
+    title: "Chief Executive",
+    linkedin: "https://www.linkedin.com/in/bryanhertz",
+    description:
+      "Serial tech entrepreneur with over $100M raised and a Dot Com exit. Movie / Music executive producer with deep experience across content, capital, and platform strategy.",
   },
   {
     name: "Chris Bosco",
-    role: "COO & Chief Strategy Officer · Filmio Studios",
+    title: "Studio Executive",
     linkedin: "https://www.linkedin.com/in/boscochris/",
-  },
-  {
-    name: "Corey Hertz",
-    role: "Co-Founder & Chief Product Officer · Filmio Studios",
-    linkedin: "https://www.linkedin.com/in/corey-hertz-02651013/",
-  },
-  {
-    name: "Chris J. Davis",
-    role: "Co-Founder & CTO · Filmio Studios",
-    linkedin: "https://www.linkedin.com/in/chrisjdavis/",
+    description:
+      "Long-term media & entertainment co-founder, president and COO. Held senior roles at MGM, United Artists, and Stampede — bringing decades of studio and distribution expertise.",
   },
   {
     name: "Stipe Maric",
-    role: "Director · Filmio Studios",
-    linkedin: "https://www.linkedin.com/in/stipemaric/",
+    title: "Platform Executive",
+    linkedin: "https://www.linkedin.com/in/stipemaric",
+    description:
+      "Seasoned entrepreneur and advisor with roles at T-Mobile and ADL. Scaled multiple tech and media companies across Europe and North America.",
   },
 ];
 
-const STUDIOS = [
-  { name: "Netflix", color: "rgb(229,9,20)" },
-  { name: "Disney", color: "rgb(17,60,207)" },
-  { name: "Universal", color: "rgb(255,215,0)" },
-  { name: "Amazon MGM", color: "rgb(0,168,225)" },
-  { name: "Sundance", color: "rgb(236,28,36)" },
-  { name: "SXSW", color: "rgb(245,166,35)" },
+const SECOND_ROW: TeamMember[] = [
+  {
+    name: "Ian LeWinter",
+    title: "Creators",
+    linkedin: "https://www.linkedin.com/in/ianlewinter",
+    description:
+      "Heads creator relations and community growth, connecting filmmakers with the tools and audience intelligence they need to succeed.",
+  },
+  {
+    name: "Chris J. Davis",
+    title: "Technology",
+    linkedin: "https://www.linkedin.com/in/chrisjdavis",
+    description:
+      "Leads engineering and technical architecture at Filmio, driving the platform's AI infrastructure and data systems.",
+  },
+  {
+    name: "Corey Hertz",
+    title: "Product",
+    linkedin: "https://www.linkedin.com/in/corey-hertz-02651013",
+    description:
+      "Oversees product strategy and user experience, ensuring the platform delivers meaningful value to creators and audiences alike.",
+  },
 ];
 
-function TeamCard({ member }: { member: (typeof TEAM_ROW_1)[0] }) {
-  const initials = member.name
-    .split(" ")
-    .map((part) => part[0])
-    .join("")
-    .slice(0, 2)
-    .toUpperCase();
+const ADVISORS = [
+  {
+    name: "Kevin Harrington",
+    title: "Original Shark · Shark Tank",
+    linkedin: "https://www.linkedin.com/in/kevinharrington1/",
+    signal: "Capital formation, consumer scale, and direct-response growth.",
+  },
+  {
+    name: "Patrick Reed Johnson",
+    title: "Filmmaker · Story Advisor",
+    linkedin: "https://www.linkedin.com/in/patrickreadjohnson/",
+    signal: "Writer-director perspective across studio and independent storytelling.",
+  },
+  {
+    name: "Amazon MGM Studios exec",
+    title: "Strategic Advisor",
+    signal: "Current studio operating perspective; name withheld for website confidentiality.",
+  },
+];
 
+const EXPERIENCE_SIGNALS = ["Netflix", "Disney", "Universal", "Amazon MGM", "Sundance", "SXSW"];
+
+function scrollToBooking() {
+  document.getElementById("highlevel-embed")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function LeadershipCard({ member, featured = false }: { member: TeamMember; featured?: boolean }) {
   return (
-    <div className="flex flex-col items-center gap-3 rounded-lg border border-primary/20 card-aurora-blue p-6">
-      <div
-        className="flex h-24 w-24 items-center justify-center rounded-full border-2 border-filmio-sea/30 bg-[radial-gradient(circle_at_30%_25%,rgba(117,246,158,0.24),rgba(0,174,239,0.14)_45%,rgba(233,30,140,0.10))] shadow-[0_0_36px_rgba(0,174,239,0.18)]"
-        aria-label={`${member.name} headshot placeholder`}
-      >
-        <span className="font-display text-xl font-extrabold tracking-wide text-foreground/90">
-          {initials}
-        </span>
+    <article className={`team-leadership-card ${featured ? "team-leadership-card-featured" : ""}`}>
+      <div className="team-card-topline">
+        <span>{member.title}</span>
+        <span className="team-card-rule" />
       </div>
-      <div className="text-center">
-        <a
-          className="font-body text-sm font-bold text-foreground hover:text-filmio-sea transition-colors"
-          href={member.linkedin}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
+      {member.linkedin ? (
+        <a className="team-card-name" href={member.linkedin} rel="noopener noreferrer" target="_blank">
           {member.name}
         </a>
-        <p className="font-body text-xs text-foreground/40">{member.role}</p>
-      </div>
-    </div>
+      ) : (
+        <h3 className="team-card-name">{member.name}</h3>
+      )}
+      <p>{member.description}</p>
+    </article>
   );
 }
 
 export function TeamSection() {
   return (
-    <section className="bg-cinematic-team">
-      <div className="max-w-5xl mx-auto px-5 md:px-8 py-16 md:py-24 text-center">
-        <h2 className="font-display text-2xl md:text-4xl text-foreground mb-2 font-extrabold tracking-tight">
-          200+ Years of Combined Experience
-        </h2>
-        <p className="font-body text-base text-foreground/50 mb-4 max-w-xl mx-auto">
-          Our advisors and leadership bring experience from the world's top studios and platforms.
-        </p>
-        <div className="mx-auto w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent mb-10" />
+    <section className="filmio-section team-experience-section relative overflow-hidden border-t border-white/5 bg-cinematic-team py-16 md:py-24">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-filmio-sea/40 to-transparent" />
+      <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-10">
+        <div className="mx-auto mb-10 max-w-4xl text-center">
+          <p className="team-eyebrow">Leadership depth</p>
+          <h2 className="font-display text-[clamp(2.15rem,4.3vw,4.7rem)] font-extrabold leading-[0.98] tracking-tight text-white">
+            200+ Years of Combined Experience
+          </h2>
+          <p className="mx-auto mt-5 max-w-3xl font-body text-base leading-relaxed text-white/64 md:text-xl">
+            Filmio combines studio operators, technology builders, creator-growth leaders, and advisors who understand how stories move from signal to screen.
+          </p>
+        </div>
 
-        {/* Studio logos row */}
-        <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 mb-14">
-          <span className="font-body text-[10px] uppercase tracking-[0.15em] text-foreground/30">
-            Experience from
-          </span>
-          {STUDIOS.map((s) => (
-            <span
-              key={s.name}
-              className="font-display text-sm md:text-base font-bold tracking-wide opacity-50 hover:opacity-80 transition-opacity"
-              style={{ color: s.color }}
-            >
-              {s.name}
-            </span>
+        <div className="team-experience-strip">
+          <span>Experience from</span>
+          {EXPERIENCE_SIGNALS.map((signal) => (
+            <strong key={signal}>{signal}</strong>
           ))}
         </div>
 
-        {/* Team rows */}
-        <div className="mb-14 space-y-4">
-          <div className="grid gap-4 grid-cols-2 sm:grid-cols-4">
-            {TEAM_ROW_1.map((m) => (
-              <TeamCard key={m.name} member={m} />
+        <div className="grid gap-4 lg:grid-cols-3">
+          {TOP_ROW.map((member) => (
+            <LeadershipCard key={member.name} member={member} featured />
+          ))}
+        </div>
+
+        <div className="mt-4 grid gap-4 md:grid-cols-3">
+          {SECOND_ROW.map((member) => (
+            <LeadershipCard key={member.name} member={member} />
+          ))}
+        </div>
+
+        <div className="advisor-band mt-6">
+          <div className="advisor-band-heading">
+            <p>Advisor layer</p>
+            <h3>Capital, story, and studio-market pattern recognition.</h3>
+          </div>
+          <div className="advisor-chip-grid">
+            {ADVISORS.map((advisor) => (
+              <article key={advisor.name} className="advisor-chip-card">
+                <div>
+                  {advisor.linkedin ? (
+                    <a href={advisor.linkedin} rel="noopener noreferrer" target="_blank">
+                      {advisor.name}
+                    </a>
+                  ) : (
+                    <strong>{advisor.name}</strong>
+                  )}
+                  <span>{advisor.title}</span>
+                </div>
+                <p>{advisor.signal}</p>
+              </article>
             ))}
           </div>
-          <div className="grid gap-4 grid-cols-2 sm:grid-cols-5">
-            {TEAM_ROW_2.map((m) => (
-              <TeamCard key={m.name} member={m} />
-            ))}
-          </div>
+        </div>
+
+        <div className="section-booking-cta">
+          <button type="button" onClick={scrollToBooking}>Book a call to Learn More</button>
         </div>
       </div>
     </section>
