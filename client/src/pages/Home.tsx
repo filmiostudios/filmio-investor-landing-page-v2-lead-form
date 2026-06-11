@@ -466,14 +466,14 @@ function ValuationLandscape() {
   return (
     <div>
       <div className="mb-8 text-center">
-        <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-sea">Market proof</p>
-        <p className="mx-auto mt-3 max-w-5xl whitespace-normal font-body text-lg font-semibold leading-relaxed text-white/70 xl:whitespace-nowrap xl:text-xl">
+        <p className="mx-auto max-w-6xl whitespace-nowrap font-body text-[clamp(0.72rem,1.35vw,1.12rem)] font-semibold leading-relaxed text-white/70">
           The first wave created AI giants. The second wave is creating vertical AI category leaders.
         </p>
       </div>
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="valuation-panel valuation-blue rounded-[2rem] border border-white/10 p-7">
-          <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-sea">First wave</p>
+          <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-sea">Market proof</p>
+          <p className="mt-4 font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-sea">First wave</p>
           <h3 className="mt-3 font-display text-3xl font-extrabold text-white">Foundation AI scale</h3>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <AICompanyCard name="OpenAI" slug="openai" category="Foundation AI" description="Model-scale intelligence platform" value="~$1T" />
