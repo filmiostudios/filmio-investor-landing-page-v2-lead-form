@@ -25,10 +25,12 @@ const investorCards: Card[] = [
   {
     title: "Filmio already has proprietary signal",
     body: "Audience behavior, creator activity, project scoring, and outcome data can compound into a durable moat.",
+    proofPoints: ["Projects onboarded 350+", "Fans acquired 415K+", "Votes / stakes 340M+", "Global film corpus 1.3M+", "Training records 79K+", "Viability model 89.06%", "Signals 46 dimensions"],
   },
   {
     title: "The market is massive",
     body: "Entertainment remains one of the world’s largest and most culturally influential industries.",
+    proofPoints: ["Indie Film & TV $6.8B", "Total Film & TV $200B", "Entertainment $3T", "10M Filmmakers", "200M Video Creators"],
   },
 ];
 
@@ -395,6 +397,9 @@ function ProblemConstellation() {
 }
 
 function VertovPipeline() {
+  const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const vertovVideoSrc = `${basePath}/videos/vertov-agentic-movie-workflow-demo.mp4`;
+
   return (
     <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
       <div className="spotlight-panel rounded-[2rem] border border-white/10 p-8">
@@ -412,65 +417,80 @@ function VertovPipeline() {
       <div className="media-frame overflow-hidden rounded-[2rem] border border-filmio-green/15 bg-black shadow-2xl shadow-filmio-green/10">
         <video
           className="block h-full min-h-[320px] w-full object-cover"
-          src="/videos/vertov-agentic-movie-workflow-demo.mp4"
           autoPlay
           loop
           muted
           playsInline
+          controls
           preload="metadata"
           aria-label="Vertov fully agentic movie workflow demo"
-        />
+        >
+          <source src={vertovVideoSrc} type="video/mp4" />
+        </video>
       </div>
     </div>
+  );
+}
+
+function AICompanyCard({
+  name,
+  slug,
+  category,
+  description,
+  value,
+  extension = "svg",
+}: {
+  name: string;
+  slug: string;
+  category: string;
+  description: string;
+  value: string;
+  extension?: "svg" | "png";
+}) {
+  return (
+    <article className="ai-market-card">
+      <div className="ai-market-logo-wrap">
+        <BrandLogo name={name} slug={slug} extension={extension} showName={false} className="ai-market-logo" />
+      </div>
+      <div className="ai-market-card-copy">
+        <p className="ai-market-category">{category}</p>
+        <h4>{name}</h4>
+        <p>{description}</p>
+      </div>
+      <div className="ai-market-value">{value}</div>
+    </article>
   );
 }
 
 function ValuationLandscape() {
   return (
     <div>
-      <p className="mb-8 max-w-3xl font-body text-xl font-semibold leading-relaxed text-white/70">
-        The first wave created AI giants. The second wave is creating vertical AI category leaders.
-      </p>
+      <div className="mb-8 text-center">
+        <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-sea">Market proof</p>
+        <p className="mx-auto mt-3 max-w-5xl whitespace-normal font-body text-lg font-semibold leading-relaxed text-white/70 xl:whitespace-nowrap xl:text-xl">
+          The first wave created AI giants. The second wave is creating vertical AI category leaders.
+        </p>
+      </div>
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="valuation-panel valuation-blue rounded-[2rem] border border-white/10 p-7">
           <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-sea">First wave</p>
           <h3 className="mt-3 font-display text-3xl font-extrabold text-white">Foundation AI scale</h3>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
-            <div className="metric-tile metric-logo-tile text-filmio-sea">
-              <BrandLogo name="OpenAI" slug="openai" showName={false} className="metric-brand-logo" />
-              <span>OpenAI</span>
-              <strong>~$300 Billion</strong>
-            </div>
-            <div className="metric-tile metric-logo-tile text-filmio-sea">
-              <BrandLogo name="Anthropic" slug="anthropic" showName={false} className="metric-brand-logo" />
-              <span>Anthropic</span>
-              <strong>~$61 Billion</strong>
-            </div>
+            <AICompanyCard name="OpenAI" slug="openai" category="Foundation AI" description="Model-scale intelligence platform" value="~$1T" />
+            <AICompanyCard name="Anthropic" slug="anthropic" category="Foundation AI" description="Enterprise-safe AI model layer" value="~$1T" />
           </div>
         </div>
         <div className="valuation-panel valuation-green rounded-[2rem] border border-white/10 p-7">
           <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-green">Second wave</p>
           <h3 className="mt-3 font-display text-3xl font-extrabold text-white">Vertical workflow ownership</h3>
-          <div className="mt-6 grid gap-3">
-            <div className="metric-tile metric-logo-tile text-filmio-green">
-              <BrandLogo name="Cursor" slug="cursor" showName={false} className="metric-brand-logo" />
-              <span>Cursor</span>
-              <strong>$60 Billion</strong>
-            </div>
-            <div className="metric-tile metric-logo-tile text-filmio-green">
-              <BrandLogo name="Harvey" slug="harvey" showName={false} className="metric-brand-logo metric-brand-wordmark" />
-              <span>Harvey</span>
-              <strong>$11 Billion</strong>
-            </div>
-            <div className="metric-tile metric-logo-tile text-filmio-green">
-              <BrandLogo name="Sierra" slug="sierra" showName={false} className="metric-brand-logo metric-brand-wordmark" />
-              <span>Sierra</span>
-              <strong>$10 Billion</strong>
-            </div>
+          <div className="mt-6 grid gap-3 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+            <AICompanyCard name="Cursor (coding)" slug="cursor" category="Software" description="AI-native coding workflow" value="$60B" />
+            <AICompanyCard name="Harvey (legal)" slug="harvey" category="Legal" description="AI legal workflow layer" value="$11B" />
+            <AICompanyCard name="Sierra (support)" slug="sierra" category="Support" description="AI customer-service agents" value="$10B" />
           </div>
         </div>
       </div>
-      <p className="mt-8 max-w-4xl font-body text-lg leading-relaxed text-white/72">
+      <p className="mx-auto mt-8 max-w-4xl text-center font-body text-lg leading-relaxed text-white/72">
         The future AI unicorns will not be chatbots. They will be vertical AI companies that own valuable industry workflows. Filmio’s opportunity is to build that category leader for entertainment.
       </p>
     </div>
@@ -486,7 +506,7 @@ export default function Home() {
         <FilmioNav />
         <HeroSection />
 
-        <SectionShell title="Hollywood guesses. Filmio measures." className="bg-cinematic-problem/60">
+        <SectionShell title="The Civilizational Bug in Entertainment" className="bg-cinematic-problem/60">
           <ProblemConstellation />
         </SectionShell>
 
@@ -496,24 +516,15 @@ export default function Home() {
           </div>
         </SectionShell>
 
-        <SectionShell sectionNumber="05" eyebrow="Section 5" title="Meet Vertov: The Vertical AI Agent Filmmaking Crew" className="bg-cinematic-fund/70">
+        <SectionShell title="Meet Vertov:" className="bg-cinematic-fund/70" intro="The Vertical AI Agent Filmmaking Crew">
           <VertovPipeline />
         </SectionShell>
 
-        <SectionShell sectionNumber="06" eyebrow="Section 6" title="AI Valuations Are Exploding" className="bg-cinematic-team/70">
+        <SectionShell title="AI Valuations Are Exploding" className="bg-cinematic-team/70">
           <ValuationLandscape />
-          <div className="mt-8">
-            <BrandProofStrip />
-          </div>
-        </SectionShell>
-
-        <SectionShell sectionNumber="07" eyebrow="Section 7" title="Why Investors Should Care Now" className="bg-cinematic-highlights/70">
-          <EntertainmentLogoMap />
         </SectionShell>
 
         <SectionShell
-          sectionNumber="08"
-          eyebrow="Section 8"
           title="Watch the Briefing. Book the Call."
           className="bg-cinematic-cta/80"
           intro="Start with the short briefing, then book a call to review the Filmio opportunity in more detail."

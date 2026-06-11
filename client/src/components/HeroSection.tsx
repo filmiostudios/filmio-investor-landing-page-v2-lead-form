@@ -213,8 +213,8 @@ export function HeroSection() {
         <div className="hero-comparable-logos mx-auto mt-5 grid max-w-5xl gap-2 sm:grid-cols-2 lg:grid-cols-[1.25fr_repeat(5,minmax(0,1fr))] lg:items-center">
           <p className="hero-comparable-label font-body text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">Vertical AI value signals</p>
           {[
-            ["OpenAI", "~$300B"],
-            ["Anthropic", "~$61B"],
+            ["OpenAI", "~$1T"],
+            ["Anthropic", "~$1T"],
             ["Cursor", "~$60B"],
             ["Harvey", "~$11B"],
             ["Sierra", "~$10B"],

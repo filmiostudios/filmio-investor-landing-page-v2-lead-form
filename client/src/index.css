@@ -1191,3 +1191,114 @@
     transform: translateY(0) scale(1);
   }
 }
+
+/* Latest investor feedback correction pass: market-proof valuation cards and Vertov media */
+.ai-market-card {
+  min-width: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.85rem;
+  min-height: 236px;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+  padding: 1rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 18px 50px rgba(0, 0, 0, 0.18);
+}
+
+.ai-market-logo-wrap {
+  min-width: 0;
+}
+
+.ai-market-logo.brand-logo-tile {
+  min-height: 86px;
+  justify-content: center;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 1rem 1.1rem;
+}
+
+.ai-market-logo.brand-logo-tile:hover {
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.ai-market-logo .brand-logo-img {
+  max-height: 56px;
+  max-width: min(100%, 240px);
+  filter: none;
+}
+
+.ai-market-card-copy {
+  min-width: 0;
+}
+
+.ai-market-category {
+  font-family: var(--font-body);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(117, 246, 158, 0.72);
+}
+
+.ai-market-card h4 {
+  margin-top: 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.05;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.ai-market-card p:not(.ai-market-category) {
+  margin-top: 0.45rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.58);
+}
+
+.ai-market-value {
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 174, 239, 0.22);
+  background: rgba(0, 174, 239, 0.09);
+  padding: 0.45rem 0.72rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.premium-card .rounded-full {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.media-frame video {
+  aspect-ratio: 16 / 9;
+  min-height: 360px;
+  background: #000;
+}
+
+@media (max-width: 640px) {
+  .ai-market-card {
+    min-height: auto;
+  }
+
+  .ai-market-logo.brand-logo-tile {
+    min-height: 76px;
+  }
+
+  .ai-market-logo .brand-logo-img {
+    max-height: 48px;
+  }
+
+  .media-frame video {
+    min-height: 240px;
+  }
+}
