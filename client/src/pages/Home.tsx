@@ -8,39 +8,19 @@ import { MobileBookingBar } from "@/components/MobileBookingBar";
 type Card = {
   title: string;
   body: string;
+  proofPoints?: string[];
 };
-
-const reversalCards: Card[] = [
-  {
-    title: "Film.io Audience Signal",
-    body: "Fans vote, engage, and reveal conviction before production begins.",
-  },
-  {
-    title: "GoScore",
-    body: "An AI-powered scoring system measuring demand, readiness, and commercial potential.",
-  },
-  {
-    title: "Thalberg",
-    body: "Predictive entertainment intelligence for market fit, monetization, and distribution strategy.",
-  },
-  {
-    title: "Vertov",
-    body: "The Vertical AI Agent Filmmaking Crew for end-to-end creative and commercial workflow.",
-  },
-  {
-    title: "Filmio Studios + Film Fund",
-    body: "The execution and capital layer that turns validated demand into financed entertainment.",
-  },
-];
 
 const investorCards: Card[] = [
   {
     title: "AI is moving vertical",
-    body: "The market is rewarding companies that own specialized professional workflows.",
+    body: "Vertical AI agents are the fastest-growing software category in 2026. The market is rewarding companies that own specialized professional workflows.",
+    proofPoints: ["Cursor $60B (software)", "Harvey $11B (legal)", "Sierra $10B (support)"],
   },
   {
     title: "Entertainment still lacks intelligence infrastructure",
-    body: "Finance has Bloomberg, healthcare has IQVIA, aviation has Amadeus and Sabre, and real estate has CoStar. Film still lacks its category-defining intelligence layer.",
+    body: "Film still lacks its category-defining AI intelligence layer.",
+    proofPoints: ["S&P $126B (finance)", "Sportradar/Moneyball $4.6B (sports)", "Verisk $24B"],
   },
   {
     title: "Filmio already has proprietary signal",
@@ -163,15 +143,6 @@ const problemBlocks = [
   "The industry still lacks a real intelligence layer.",
 ];
 
-const whyNowBullets = [
-  "Better signal before capital moves",
-  "Better intelligence before projects are greenlit",
-  "Better execution across the filmmaking workflow",
-  "Better feedback loops after release",
-];
-
-const vertovBullets = ["Ideation", "Development", "Packaging", "Funding", "Production", "Marketing", "Distribution"];
-
 const investmentBullets = [
   "SAFE structure",
   "$30M valuation cap",
@@ -189,16 +160,12 @@ const endgameBullets = [
 ];
 
 function SectionShell({
-  eyebrow,
   title,
-  sectionNumber,
   children,
   className = "",
   intro,
 }: {
-  eyebrow?: string;
   title: string;
-  sectionNumber: string;
   children: React.ReactNode;
   className?: string;
   intro?: string;
@@ -206,15 +173,11 @@ function SectionShell({
   return (
     <section className={`filmio-section relative overflow-hidden border-t border-white/5 py-16 md:py-24 ${className}`}>
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-filmio-sea/40 to-transparent" />
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-5 md:px-10 lg:grid-cols-[220px_minmax(0,1fr)]">
-        <aside className="section-rail lg:sticky lg:top-28 lg:self-start">
-          <div className="section-number">{sectionNumber}</div>
-          {eyebrow && <p className="mt-4 font-body text-xs font-bold uppercase tracking-[0.26em] text-filmio-green">{eyebrow}</p>}
-        </aside>
+      <div className="relative z-10 mx-auto max-w-7xl px-5 md:px-10">
         <div>
-          <div className="mb-10 max-w-4xl">
+          <div className="mx-auto mb-10 max-w-4xl text-center">
             <h2 className="font-display text-[clamp(2.15rem,4.3vw,4.7rem)] font-extrabold leading-[0.98] tracking-tight text-white">{title}</h2>
-            {intro && <p className="mt-5 max-w-3xl font-body text-base leading-relaxed text-white/64 md:text-xl">{intro}</p>}
+            {intro && <p className="mx-auto mt-5 max-w-3xl font-body text-base leading-relaxed text-white/64 md:text-xl">{intro}</p>}
           </div>
           {children}
         </div>
@@ -235,6 +198,15 @@ function PremiumCard({ card, index }: { card: Card; index: number }) {
       </div>
       <h3 className="font-display text-xl font-extrabold leading-tight text-white md:text-2xl">{card.title}</h3>
       <p className="mt-3 font-body text-sm leading-relaxed text-white/62 md:text-base">{card.body}</p>
+      {card.proofPoints && (
+        <div className="mt-5 grid gap-2">
+          {card.proofPoints.map((point) => (
+            <div key={point} className="rounded-full border border-filmio-sea/18 bg-filmio-sea/8 px-3 py-2 font-body text-xs font-bold uppercase tracking-[0.12em] text-white/72">
+              {point}
+            </div>
+          ))}
+        </div>
+      )}
     </article>
   );
 }
@@ -407,10 +379,7 @@ function ProblemConstellation() {
       <div className="problem-hero-card spotlight-panel relative overflow-hidden rounded-[1.6rem] border border-white/10 p-7 md:p-9">
         <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-filmio-pink/10 blur-3xl" />
         <p className="relative font-display text-3xl font-extrabold leading-tight text-white md:text-5xl">
-          Hollywood has optimized the spend. Filmio is optimizing the signal.
-        </p>
-        <p className="relative mt-5 max-w-2xl font-body text-lg leading-relaxed text-white/64">
-          Filmio was built to reverse that sequence.
+          Hollywood guesses. Filmio measures.
         </p>
       </div>
       <div className="problem-proof-grid mt-5 grid gap-4 md:grid-cols-2">
@@ -418,27 +387,6 @@ function ProblemConstellation() {
           <div key={block} className="problem-row group">
             <span className="problem-index">{String(index + 1).padStart(2, "0")}</span>
             <p>{block}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function OperatingSystemFlow() {
-  return (
-    <div className="operating-flow rounded-[2rem] border border-white/10 p-5 md:p-7">
-      <p className="mb-8 font-display text-2xl font-extrabold text-filmio-sea md:text-4xl">
-        Signal <span>→</span> Intelligence <span>→</span> Capital <span>→</span> Outcome <span>→</span> Stronger Intelligence
-      </p>
-      <div className="grid gap-4 lg:grid-cols-5">
-        {reversalCards.map((card, index) => (
-          <div key={card.title} className="flow-node relative rounded-[1.4rem] border border-white/10 p-5">
-            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-filmio-green/25 bg-filmio-green/10 font-display text-sm font-extrabold text-filmio-green">
-              {index + 1}
-            </div>
-            <h3 className="font-display text-lg font-extrabold leading-tight text-white">{card.title}</h3>
-            <p className="mt-3 font-body text-sm leading-relaxed text-white/58">{card.body}</p>
           </div>
         ))}
       </div>
@@ -461,18 +409,17 @@ function VertovPipeline() {
           ))}
         </div>
       </div>
-      <div className="pipeline-card rounded-[2rem] border border-filmio-green/15 p-6 md:p-8">
-        <div className="pipeline-grid">
-          {vertovBullets.map((item) => (
-            <div key={item} className="pipeline-step">
-              <span />
-              <p>{item}</p>
-            </div>
-          ))}
-        </div>
-        <p className="mt-7 rounded-2xl border border-filmio-green/20 bg-filmio-green/10 p-5 font-body text-base font-semibold leading-relaxed text-white/78">
-          Vertov is how Filmio turns intelligence into action across the entire entertainment pipeline.
-        </p>
+      <div className="media-frame overflow-hidden rounded-[2rem] border border-filmio-green/15 bg-black shadow-2xl shadow-filmio-green/10">
+        <video
+          className="block h-full min-h-[320px] w-full object-cover"
+          src="/videos/vertov-agentic-movie-workflow-demo.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-label="Vertov fully agentic movie workflow demo"
+        />
       </div>
     </div>
   );
@@ -492,12 +439,12 @@ function ValuationLandscape() {
             <div className="metric-tile metric-logo-tile text-filmio-sea">
               <BrandLogo name="OpenAI" slug="openai" showName={false} className="metric-brand-logo" />
               <span>OpenAI</span>
-              <strong>~$1 Trillion</strong>
+              <strong>~$300 Billion</strong>
             </div>
             <div className="metric-tile metric-logo-tile text-filmio-sea">
               <BrandLogo name="Anthropic" slug="anthropic" showName={false} className="metric-brand-logo" />
               <span>Anthropic</span>
-              <strong>~$1 Trillion</strong>
+              <strong>~$61 Billion</strong>
             </div>
           </div>
         </div>
@@ -539,29 +486,13 @@ export default function Home() {
         <FilmioNav />
         <HeroSection />
 
-        <SectionShell sectionNumber="02" eyebrow="Section 2" title="The Civilizational Bug in Entertainment" className="bg-cinematic-problem/60">
+        <SectionShell title="Hollywood guesses. Filmio measures." className="bg-cinematic-problem/60">
           <ProblemConstellation />
         </SectionShell>
 
-        <SectionShell sectionNumber="03" eyebrow="Section 3" title="Filmio Reverses the Order" className="bg-cinematic-highlights/70">
-          <OperatingSystemFlow />
-        </SectionShell>
-
-        <SectionShell sectionNumber="04" eyebrow="Section 4" title="Why Filmio Matters Now" className="bg-cinematic-why/70">
-          <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-            <div className="spotlight-panel rounded-[2rem] border border-white/10 p-8 md:p-10">
-              <div className="space-y-4 font-body text-lg leading-relaxed text-white/68 md:text-xl">
-                <p>Entertainment is becoming programmable.</p>
-                <p>The next great entertainment company may not be the one that produces the most content.</p>
-                <p>It may be the one that best understands what should be made, who it is for, and how to move it to market.</p>
-              </div>
-            </div>
-            <div>
-              <BulletList bullets={whyNowBullets} />
-              <p className="mt-6 rounded-[1.5rem] border border-filmio-sea/20 bg-filmio-sea/5 p-6 font-body text-base font-semibold leading-relaxed text-white/78 shadow-[0_0_40px_rgba(0,174,239,0.08)]">
-                Filmio is building the system that connects audience demand to real entertainment outcomes.
-              </p>
-            </div>
+        <SectionShell title="Why Filmio Matters Now" className="bg-cinematic-why/70">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {investorCards.map((card, index) => <PremiumCard key={card.title} card={card} index={index} />)}
           </div>
         </SectionShell>
 
@@ -577,12 +508,7 @@ export default function Home() {
         </SectionShell>
 
         <SectionShell sectionNumber="07" eyebrow="Section 7" title="Why Investors Should Care Now" className="bg-cinematic-highlights/70">
-          <div className="mb-8">
-            <EntertainmentLogoMap />
-          </div>
-          <div className="grid gap-5 md:grid-cols-2">
-            {investorCards.map((card, index) => <PremiumCard key={card.title} card={card} index={index} />)}
-          </div>
+          <EntertainmentLogoMap />
         </SectionShell>
 
         <SectionShell

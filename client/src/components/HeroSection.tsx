@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
-import { BrandLogo } from "@/components/BrandLogo";
-
 const BOOKING_URL = "https://api.leadconnectorhq.com/widget/bookings/filmio-studios-discovery";
 const HEYGEN_EMBED_URL = "https://app.heygen.com/embeds/7a02df82a8944c69886006bdb46102ce";
 const CANVA_EMBED_URL = "https://www.canva.com/design/DAHLXrRRU2c/fd2PByLcd1haA-Ux9Fq-rA/view?embed";
-const CANVA_DECK_URL =
-  "https://www.canva.com/design/DAHLXrRRU2c/fd2PByLcd1haA-Ux9Fq-rA/view?utm_content=DAHLXrRRU2c&utm_campaign=designshare&utm_medium=embeds&utm_source=link";
 
 function VideoEmbed() {
   return (
@@ -82,14 +78,6 @@ function CanvaEmbed({ compact = false }: { compact?: boolean }) {
         >
           Expand deck on this page
         </button>
-        <a
-          className="inline-flex font-body text-xs font-bold text-white/38 underline-offset-4 transition-colors hover:text-filmio-sea hover:underline"
-          href={CANVA_DECK_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Open in Canva
-        </a>
       </div>
 
       {isExpanded
@@ -160,11 +148,11 @@ function HeroBookingPanel() {
         <iframe
           scrolling="yes"
           src={BOOKING_URL}
-          className="block h-full min-h-[500px] w-full border-0"
+          className="block h-full min-h-[620px] w-full border-0"
           title="Book a Discovery Call"
         />
       </div>
-      <div className="mt-3 text-center">
+      <div className="mt-auto pt-3 text-center">
         <a
           className="inline-flex rounded-full border border-filmio-sea/30 bg-filmio-sea/10 px-4 py-2 font-body text-xs font-bold text-filmio-sea transition-all duration-300 hover:-translate-y-0.5 hover:bg-filmio-sea/20 hover:shadow-[0_0_24px_rgba(0,174,239,0.18)]"
           href={BOOKING_URL}
@@ -184,19 +172,6 @@ function HeroBookingPanel() {
 export { VideoEmbed, CanvaEmbed, BOOKING_URL };
 
 export function HeroSection() {
-  const supportLines = [
-    "Audience conviction before capital",
-    "Intelligence before greenlights",
-    "AI agents across the filmmaking workflow",
-    "A system that compounds with every outcome",
-  ];
-
-  const steps = [
-    { label: "01", title: "Watch", body: "5-minute thesis briefing" },
-    { label: "02", title: "Scan", body: "Investor deck below the video" },
-    { label: "03", title: "Book", body: "20-minute discovery call" },
-  ];
-
   return (
     <section className="hero-stage hero-stage-conversion relative overflow-hidden" id="hero">
       <div className="pointer-events-none absolute inset-0">
@@ -206,36 +181,14 @@ export function HeroSection() {
         <div className="hero-grid-overlay" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1420px] px-5 pb-10 pt-6 md:px-10 md:pb-14 md:pt-8">
-        <div className="mx-auto mb-5 max-w-6xl text-center md:mb-6">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-filmio-green/25 bg-filmio-green/10 px-4 py-1.5 shadow-[0_0_35px_rgba(117,246,158,0.08)]">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-filmio-green opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-filmio-green" />
-            </span>
-            <span className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-filmio-green">
-              For accredited investors only
-            </span>
-          </div>
-
-          <h1 className="mx-auto max-w-6xl font-display text-[clamp(2.35rem,5.2vw,5.35rem)] font-extrabold leading-[0.9] tracking-tight text-foreground">
+      <div className="relative z-10 mx-auto max-w-[1420px] px-5 pb-10 pt-3 md:px-10 md:pb-14 md:pt-5">
+        <div className="mx-auto mb-3 max-w-6xl text-center md:mb-4">
+          <h1 className="mx-auto max-w-6xl font-display text-[clamp(2.1rem,4.35vw,4.45rem)] font-extrabold leading-[0.92] tracking-tight text-foreground">
             The Stories That Shape Culture Shouldn’t Be Chosen by Guesswork.
           </h1>
-          <p className="mx-auto mt-4 max-w-4xl font-body text-base leading-relaxed text-white/68 md:text-xl">
+          <p className="mx-auto mt-3 max-w-4xl font-body text-sm leading-relaxed text-white/68 md:text-lg">
             Filmio is building the AI Intelligence Infrastructure for entertainment: demand signal, predictive intelligence, vertical AI agents, studio execution, and capital deployment.
           </p>
-        </div>
-
-        <div className="hero-action-strip mx-auto mb-5 grid max-w-5xl gap-3 md:grid-cols-3">
-          {steps.map((step) => (
-            <div key={step.label} className="hero-action-step">
-              <span>{step.label}</span>
-              <div>
-                <strong>{step.title}</strong>
-                <p>{step.body}</p>
-              </div>
-            </div>
-          ))}
         </div>
 
         <div className="hero-command-center conversion-cockpit pitch-cockpit grid gap-4 rounded-[2rem] border border-white/10 p-3 md:p-4 xl:grid-cols-[minmax(0,0.92fr)_minmax(440px,0.82fr)] xl:items-stretch">
@@ -243,7 +196,6 @@ export function HeroSection() {
             <div className="mb-3 flex items-center justify-between gap-4">
               <div>
                 <p className="font-body text-xs font-bold uppercase tracking-[0.22em] text-filmio-sea">Investor briefing</p>
-                <p className="mt-1 font-body text-sm text-white/48">Watch the thesis. Review the deck. Book the call.</p>
               </div>
               <span className="hidden rounded-full border border-filmio-green/20 bg-filmio-green/10 px-3 py-1 font-body text-[10px] font-bold uppercase tracking-[0.18em] text-filmio-green sm:inline-flex">
                 Vertov / Filmio
@@ -258,22 +210,20 @@ export function HeroSection() {
           <HeroBookingPanel />
         </div>
 
-        <div className="hero-proof-row mx-auto mt-5 grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {supportLines.map((line) => (
-            <div key={line} className="hero-chip justify-center text-center">
-              <span />
-              {line}
-            </div>
-          ))}
-        </div>
-
         <div className="hero-comparable-logos mx-auto mt-5 grid max-w-5xl gap-2 sm:grid-cols-2 lg:grid-cols-[1.25fr_repeat(5,minmax(0,1fr))] lg:items-center">
           <p className="hero-comparable-label font-body text-[10px] font-bold uppercase tracking-[0.22em] text-white/40">Vertical AI value signals</p>
-          <BrandLogo name="OpenAI" slug="openai" className="brand-logo-hero-signal" />
-          <BrandLogo name="Anthropic" slug="anthropic" className="brand-logo-hero-signal" />
-          <BrandLogo name="Cursor" slug="cursor" className="brand-logo-hero-signal" />
-          <BrandLogo name="Harvey" slug="harvey" className="brand-logo-hero-signal brand-logo-wordmark" />
-          <BrandLogo name="Sierra" slug="sierra" className="brand-logo-hero-signal brand-logo-wordmark" />
+          {[
+            ["OpenAI", "~$300B"],
+            ["Anthropic", "~$61B"],
+            ["Cursor", "~$60B"],
+            ["Harvey", "~$11B"],
+            ["Sierra", "~$10B"],
+          ].map(([name, value]) => (
+            <div key={name} className="hero-value-signal">
+              <strong>{value}</strong>
+              <span>{name}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
