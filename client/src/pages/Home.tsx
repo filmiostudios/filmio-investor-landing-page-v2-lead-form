@@ -8,6 +8,7 @@ import { MobileBookingBar } from "@/components/MobileBookingBar";
 type Card = {
   title: string;
   body: string;
+  proofTag?: string;
   proofPoints?: string[];
 };
 
@@ -15,22 +16,26 @@ const investorCards: Card[] = [
   {
     title: "AI is moving vertical",
     body: "Vertical AI agents are the fastest-growing software category in 2026. The market is rewarding companies that own specialized professional workflows.",
+    proofTag: "Market Proof",
     proofPoints: ["Cursor $60B (software)", "Harvey $11B (legal)", "Sierra $10B (support)"],
   },
   {
     title: "Entertainment still lacks intelligence infrastructure",
     body: "Film still lacks its category-defining AI intelligence layer.",
+    proofTag: "Market Proof",
     proofPoints: ["S&P $126B (finance)", "Sportradar/Moneyball $4.6B (sports)", "Verisk $24B"],
   },
   {
     title: "Filmio already has proprietary signal",
     body: "Audience behavior, creator activity, project scoring, and outcome data can compound into a durable moat.",
-    proofPoints: ["Projects onboarded 350+", "Fans acquired 415K+", "Votes / stakes 340M+", "Global film corpus 1.3M+", "Training records 79K+", "Viability model 89.06%", "Signals 46 dimensions"],
+    proofTag: "Proprietary Data Moat",
+    proofPoints: ["Projects onboarded 350+", "Fans acquired 415K+", "Votes / stakes 340M+"],
   },
   {
     title: "The market is massive",
     body: "Entertainment remains one of the world’s largest and most culturally influential industries.",
-    proofPoints: ["Indie Film & TV $6.8B", "Total Film & TV $200B", "Entertainment $3T", "10M Filmmakers", "200M Video Creators"],
+    proofTag: "$3T Entertainment Market",
+    proofPoints: ["Indie Film & TV $6.8B", "Total Film & TV $200B", "10M Filmmakers", "200M Video Creators"],
   },
 ];
 
@@ -166,11 +171,13 @@ function SectionShell({
   children,
   className = "",
   intro,
+  introClassName = "",
 }: {
   title: string;
   children: React.ReactNode;
   className?: string;
   intro?: string;
+  introClassName?: string;
 }) {
   return (
     <section className={`filmio-section relative overflow-hidden border-t border-white/5 py-16 md:py-24 ${className}`}>
@@ -179,7 +186,7 @@ function SectionShell({
         <div>
           <div className="mx-auto mb-10 max-w-4xl text-center">
             <h2 className="font-display text-[clamp(2.15rem,4.3vw,4.7rem)] font-extrabold leading-[0.98] tracking-tight text-white">{title}</h2>
-            {intro && <p className="mx-auto mt-5 max-w-3xl font-body text-base leading-relaxed text-white/64 md:text-xl">{intro}</p>}
+            {intro && <p className={`mx-auto mt-5 max-w-4xl font-body text-base leading-relaxed text-white/64 md:text-xl ${introClassName}`}>{intro}</p>}
           </div>
           {children}
         </div>
@@ -198,10 +205,13 @@ function PremiumCard({ card, index }: { card: Card; index: number }) {
         </span>
         <div className="h-px flex-1 bg-gradient-to-r from-filmio-sea/30 to-transparent" />
       </div>
-      <h3 className="font-display text-xl font-extrabold leading-tight text-white md:text-2xl">{card.title}</h3>
-      <p className="mt-3 font-body text-sm leading-relaxed text-white/62 md:text-base">{card.body}</p>
+      <div className="premium-card-copy">
+        <h3 className="font-display text-xl font-extrabold leading-tight text-white md:text-2xl">{card.title}</h3>
+        <p className="mt-3 font-body text-sm leading-relaxed text-white/62 md:text-base">{card.body}</p>
+      </div>
       {card.proofPoints && (
-        <div className="mt-5 grid gap-2">
+        <div className="premium-card-proof mt-5 grid gap-2">
+          {card.proofTag && <p className="premium-card-proof-tag">{card.proofTag}</p>}
           {card.proofPoints.map((point) => (
             <div key={point} className="rounded-full border border-filmio-sea/18 bg-filmio-sea/8 px-3 py-2 font-body text-xs font-bold uppercase tracking-[0.12em] text-white/72">
               {point}
@@ -404,7 +414,7 @@ function VertovPipeline() {
     <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
       <div className="spotlight-panel rounded-[2rem] border border-white/10 p-8">
         <p className="font-body text-xl font-semibold leading-relaxed text-white/76">
-          Entertainment still does not have its defining vertical AI agent platform. Filmio intends to build it.
+          Entertainment still does not have its defining vertical AI agent platform. Filmio is building it!
         </p>
         <div className="mt-7 space-y-3">
           {["Vertov is not a generic AI tool.", "Vertov is an AI-native filmmaking crew.", "It is designed specifically for film and television workflows."].map((line) => (
@@ -450,7 +460,7 @@ function AICompanyCard({
   return (
     <article className="ai-market-card">
       <div className="ai-market-logo-wrap">
-        <BrandLogo name={name} slug={slug} extension={extension} showName={false} className="ai-market-logo" />
+        <BrandLogo name={name} slug={slug} extension={extension} showName={true} className="ai-market-logo" />
       </div>
       <div className="ai-market-card-copy">
         <p className="ai-market-category">{category}</p>
@@ -465,15 +475,10 @@ function AICompanyCard({
 function ValuationLandscape() {
   return (
     <div>
-      <div className="mb-8 text-center">
-        <p className="mx-auto max-w-6xl whitespace-nowrap font-body text-[clamp(0.72rem,1.35vw,1.12rem)] font-semibold leading-relaxed text-white/70">
-          The first wave created AI giants. The second wave is creating vertical AI category leaders.
-        </p>
-      </div>
+      <p className="market-proof-section-tag">Market proof</p>
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="valuation-panel valuation-blue rounded-[2rem] border border-white/10 p-7">
-          <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-sea">Market proof</p>
-          <p className="mt-4 font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-sea">First wave</p>
+          <p className="font-body text-xs font-bold uppercase tracking-[0.24em] text-filmio-sea">First wave</p>
           <h3 className="mt-3 font-display text-3xl font-extrabold text-white">Foundation AI scale</h3>
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <AICompanyCard name="OpenAI" slug="openai" category="Foundation AI" description="Model-scale intelligence platform" value="~$1T" />
@@ -516,11 +521,16 @@ export default function Home() {
           </div>
         </SectionShell>
 
-        <SectionShell title="Meet Vertov:" className="bg-cinematic-fund/70" intro="The Vertical AI Agent Filmmaking Crew">
+        <SectionShell title="Meet Vertov:" className="bg-cinematic-fund/70" intro="Filmio's Revolutionary AI Agent Filmmaking Crew" introClassName="section-subheading-emphasis">
           <VertovPipeline />
         </SectionShell>
 
-        <SectionShell title="AI Valuations Are Exploding" className="bg-cinematic-team/70">
+        <SectionShell
+          title="AI Valuations Are Exploding"
+          className="bg-cinematic-team/70"
+          intro="The first wave created AI giants. The second wave is creating vertical AI category leaders."
+          introClassName="section-subheading-emphasis whitespace-nowrap"
+        >
           <ValuationLandscape />
         </SectionShell>
 

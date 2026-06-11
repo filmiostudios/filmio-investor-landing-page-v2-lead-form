@@ -1302,3 +1302,115 @@
     min-height: 240px;
   }
 }
+
+/* Investor feedback layout pass: balanced Why Filmio proof cards, Vertov subheading scale, and readable AI valuation logos */
+.section-subheading-emphasis {
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 2.35vw, 2.05rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.12 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.premium-card {
+  display: flex;
+  min-height: 430px;
+  flex-direction: column;
+}
+
+.premium-card-copy {
+  min-height: 188px;
+}
+
+.premium-card-proof {
+  margin-top: 1.25rem;
+  align-content: start;
+}
+
+.premium-card-proof-tag {
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 999px;
+  border: 1px solid rgba(117, 246, 158, 0.24);
+  background: rgba(117, 246, 158, 0.09);
+  padding: 0.45rem 0.72rem;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 950;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(117, 246, 158, 0.88);
+}
+
+.market-proof-section-tag {
+  margin: 0 auto 1.35rem;
+  width: fit-content;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 174, 239, 0.3);
+  background: rgba(0, 174, 239, 0.11);
+  padding: 0.52rem 0.9rem;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 950;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: hsl(var(--filmio-sea));
+}
+
+.ai-market-card {
+  min-height: 278px;
+}
+
+.ai-market-logo.brand-logo-tile {
+  min-height: 120px;
+  flex-direction: column;
+  gap: 0.6rem;
+  justify-content: center;
+  padding: 1.1rem 1.15rem;
+}
+
+.ai-market-logo .brand-logo-img {
+  max-height: 72px;
+  max-width: min(100%, 280px);
+}
+
+.ai-market-logo .brand-logo-name {
+  font-size: 0.78rem;
+  letter-spacing: 0.13em;
+  color: rgba(8, 14, 24, 0.76);
+}
+
+@media (min-width: 1280px) {
+  .premium-card-copy {
+    min-height: 208px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .premium-card {
+    min-height: 0;
+  }
+
+  .premium-card-copy {
+    min-height: 0;
+  }
+
+  .section-subheading-emphasis.whitespace-nowrap {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 640px) {
+  .section-subheading-emphasis {
+    font-size: 1.35rem !important;
+  }
+
+  .ai-market-logo.brand-logo-tile {
+    min-height: 96px;
+  }
+
+  .ai-market-logo .brand-logo-img {
+    max-height: 58px;
+  }
+}
