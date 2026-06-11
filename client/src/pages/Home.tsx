@@ -28,13 +28,13 @@ const investorCards: Card[] = [
     title: "Entertainment still lacks intelligence infrastructure",
     body: "Film still lacks its category-defining AI intelligence layer.",
     proofTag: "Market Proof",
-    proofPoints: ["S&P $126B (finance)", "Sportradar/Moneyball $4.6B (sports)", "Verisk $24B"],
+    proofPoints: ["S&P $126B (finance)", "Sportradar/Moneyball $4.6B (sports)", "Verisk $24B (INSURANCE)"],
   },
   {
     title: "Filmio already has proprietary signal",
     body: "Audience behavior, creator activity, project scoring, and outcome data can compound into a durable moat.",
     proofTag: "Proprietary Data Moat",
-    proofPoints: ["Projects onboarded 350+", "Fans acquired 415K+", "Votes / stakes 340M+"],
+    proofPoints: ["Film & TV Projects 350+", "Fans acquired 415K+", "Votes / stakes 340M+"],
   },
   {
     title: "The market is massive",

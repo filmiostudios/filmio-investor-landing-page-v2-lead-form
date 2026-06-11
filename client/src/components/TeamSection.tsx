@@ -63,7 +63,7 @@ const ADVISORS = [
   {
     name: "Patrick Reed Johnson",
     title: "Filmmaker · Story Advisor",
-    linkedin: "https://www.linkedin.com/in/patrickreadjohnson/",
+    linkedin: "https://www.linkedin.com/in/moonwatcher/",
     signal: "Writer-director perspective across studio and independent storytelling.",
   },
   {
@@ -79,6 +79,14 @@ function scrollToBooking() {
   document.getElementById("highlevel-embed")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function LinkedInIcon() {
+  return (
+    <svg className="team-linkedin-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.59 0 4.26 2.36 4.26 5.44v6.3ZM5.36 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.14 20.45H3.58V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0Z" />
+    </svg>
+  );
+}
+
 function LeadershipCard({ member, featured = false }: { member: TeamMember; featured?: boolean }) {
   return (
     <article className={`team-leadership-card ${featured ? "team-leadership-card-featured" : ""}`}>
@@ -87,8 +95,9 @@ function LeadershipCard({ member, featured = false }: { member: TeamMember; feat
         <span className="team-card-rule" />
       </div>
       {member.linkedin ? (
-        <a className="team-card-name" href={member.linkedin} rel="noopener noreferrer" target="_blank">
-          {member.name}
+        <a className="team-card-name team-linkedin-name" href={member.linkedin} rel="noopener noreferrer" target="_blank">
+          <span>{member.name}</span>
+          <LinkedInIcon />
         </a>
       ) : (
         <h3 className="team-card-name">{member.name}</h3>
@@ -142,8 +151,9 @@ export function TeamSection() {
               <article key={advisor.name} className="advisor-chip-card">
                 <div>
                   {advisor.linkedin ? (
-                    <a href={advisor.linkedin} rel="noopener noreferrer" target="_blank">
-                      {advisor.name}
+                    <a className="advisor-linkedin-name" href={advisor.linkedin} rel="noopener noreferrer" target="_blank">
+                      <span>{advisor.name}</span>
+                      <LinkedInIcon />
                     </a>
                   ) : (
                     <strong>{advisor.name}</strong>

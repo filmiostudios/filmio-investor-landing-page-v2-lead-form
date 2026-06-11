@@ -19,7 +19,17 @@ const CREDIT_PILLARS = [
   },
 ];
 
+const POSTERS = [
+  { title: "Max Steel", src: "max-steel.jpg", signal: "Studio feature" },
+  { title: "Don’t Let The Pigeon", src: "pigeon-storytime.jpg", signal: "Family IP" },
+  { title: "KPOPS!", src: "kpops.jpg", signal: "Music + culture" },
+  { title: "Motor City", src: "motor-city.jpg", signal: "Premium feature" },
+  { title: "Dead of Winter", src: "dead-of-winter.jpg", signal: "Thriller" },
+  { title: "Fighting Spirit", src: "fighting-spirit.jpg", signal: "Documentary" },
+];
+
 const LOGO_SIGNALS = ["Netflix", "Disney", "Universal", "Amazon MGM", "Sundance", "SXSW"];
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
 
 function scrollToBooking() {
   document.getElementById("highlevel-embed")?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -47,6 +57,18 @@ export function TrackRecord() {
           <div className="track-record-marquee" aria-label="Representative experience signals">
             {LOGO_SIGNALS.map((signal) => (
               <span key={signal}>{signal}</span>
+            ))}
+          </div>
+
+          <div className="poster-showcase" aria-label="Representative films and series">
+            {POSTERS.map((poster) => (
+              <article key={poster.title} className="poster-card">
+                <img src={`${basePath}/track-posters/${poster.src}`} alt={`${poster.title} poster`} loading="lazy" />
+                <div className="poster-card-overlay">
+                  <span>{poster.signal}</span>
+                  <strong>{poster.title}</strong>
+                </div>
+              </article>
             ))}
           </div>
 

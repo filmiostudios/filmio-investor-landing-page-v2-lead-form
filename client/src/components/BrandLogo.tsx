@@ -13,7 +13,7 @@ export function BrandLogo({ name, slug, className = "", imgClassName = "", showN
   const logoSrc = `${basePath}/brand-logos/${slug}.${extension}`;
 
   return (
-    <div className={`brand-logo-tile ${className}`} aria-label={`${name} logo`} title={name}>
+    <div className={`brand-logo-tile brand-logo-${slug} ${className}`} data-brand={slug} aria-label={`${name} logo`} title={name}>
       <img
         src={logoSrc}
         alt={`${name} logo`}
