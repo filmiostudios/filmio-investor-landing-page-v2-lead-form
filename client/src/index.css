@@ -1414,3 +1414,17 @@
     max-height: 58px;
   }
 }
+
+/* Final proof-card balance pass: keep proof tags aligned across the four-card desktop row. */
+@media (min-width: 1024px) {
+  .premium-card-copy {
+    min-height: 252px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .premium-card-copy {
+    min-height: 252px;
+  }
+}
+
