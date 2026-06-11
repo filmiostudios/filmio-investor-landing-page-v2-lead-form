@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+
 import { BrandLogo } from "@/components/BrandLogo";
 
 const BOOKING_URL = "https://api.leadconnectorhq.com/widget/bookings/filmio-studios-discovery";
@@ -24,26 +27,120 @@ function VideoEmbed() {
 }
 
 function CanvaEmbed({ compact = false }: { compact?: boolean }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    if (!isExpanded) return undefined;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsExpanded(false);
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isExpanded]);
+
+  const deckTitle = "Filmio Pitch Deck June 2026";
+
   return (
     <div className={compact ? "mt-3" : "mt-8"}>
-      <div className="media-frame relative h-0 w-full overflow-hidden rounded-[1.25rem] border border-white/10 bg-white/[0.03] shadow-lg md:rounded-[1.45rem]" style={{ paddingTop: "56.25%" }}>
+      <div className="media-frame group relative h-0 w-full overflow-hidden rounded-[1.25rem] border border-white/10 bg-white/[0.03] shadow-lg md:rounded-[1.45rem]" style={{ paddingTop: "56.25%" }}>
         <iframe
           loading="lazy"
           className="absolute left-0 top-0 h-full w-full border-0 p-0"
           src={CANVA_EMBED_URL}
           allowFullScreen
           allow="fullscreen"
-          title="Filmio Pitch Deck June 2026"
+          title={deckTitle}
         />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex justify-end bg-gradient-to-t from-black/70 via-black/25 to-transparent p-3 opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+          <button
+            type="button"
+            className="pointer-events-auto inline-flex items-center gap-2 rounded-full border border-filmio-sea/35 bg-black/70 px-3 py-2 font-body text-[10px] font-bold uppercase tracking-[0.16em] text-filmio-sea shadow-[0_0_24px_rgba(0,174,239,0.16)] backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-filmio-green/50 hover:text-filmio-green focus:outline-none focus:ring-2 focus:ring-filmio-sea/60"
+            aria-haspopup="dialog"
+            aria-expanded={isExpanded}
+            onClick={() => setIsExpanded(true)}
+          >
+            Expand deck
+            <span aria-hidden="true" className="text-sm leading-none">↗</span>
+          </button>
+        </div>
       </div>
-      <a
-        className="mt-2 inline-flex font-body text-xs font-bold text-filmio-sea underline-offset-4 transition-colors hover:text-filmio-green hover:underline"
-        href={CANVA_DECK_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Filmio Pitch Deck June 2026
-      </a>
+      <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
+        <button
+          type="button"
+          className="inline-flex font-body text-xs font-bold text-filmio-sea underline-offset-4 transition-colors hover:text-filmio-green hover:underline focus:outline-none focus:ring-2 focus:ring-filmio-sea/50"
+          onClick={() => setIsExpanded(true)}
+        >
+          Expand deck on this page
+        </button>
+        <a
+          className="inline-flex font-body text-xs font-bold text-white/38 underline-offset-4 transition-colors hover:text-filmio-sea hover:underline"
+          href={CANVA_DECK_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open in Canva
+        </a>
+      </div>
+
+      {isExpanded
+        ? createPortal(
+            <div
+              className="deck-lightbox fixed inset-0 z-[100] flex items-center justify-center bg-black/82 p-3 backdrop-blur-xl md:p-6"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Expanded Filmio pitch deck"
+              onPointerDown={(event) => {
+                if (event.target === event.currentTarget) {
+                  setIsExpanded(false);
+                }
+              }}
+            >
+              <div
+                className="deck-lightbox-panel relative w-full max-w-[min(96vw,1500px)] rounded-[1.35rem] border border-filmio-sea/25 bg-[#040b12] p-2 shadow-[0_0_80px_rgba(0,174,239,0.18)] md:rounded-[1.75rem] md:p-3"
+                onPointerDown={(event) => event.stopPropagation()}
+              >
+                <div className="mb-2 flex items-center justify-between gap-3 px-1 md:mb-3 md:px-2">
+                  <div>
+                    <p className="font-body text-[10px] font-bold uppercase tracking-[0.22em] text-filmio-sea">Investor deck</p>
+                    <p className="font-body text-xs text-white/48 md:text-sm">Click outside the deck or press Escape to close.</p>
+                  </div>
+                  <button
+                    type="button"
+                    className="deck-lightbox-close relative z-20 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/8 font-body text-2xl leading-none text-white/80 transition-all duration-300 hover:border-filmio-sea/45 hover:bg-filmio-sea/15 hover:text-white focus:outline-none focus:ring-2 focus:ring-filmio-sea/60"
+                    aria-label="Close expanded deck"
+                    onMouseDown={(event) => {
+                      event.stopPropagation();
+                      setIsExpanded(false);
+                    }}
+                    onClick={() => setIsExpanded(false)}
+                  >
+                    ×
+                  </button>
+                </div>
+                <div className="deck-lightbox-frame relative z-0 w-full overflow-hidden rounded-[1rem] border border-white/10 bg-black md:rounded-[1.25rem]">
+                  <iframe
+                    className="absolute inset-0 h-full w-full border-0"
+                    src={CANVA_EMBED_URL}
+                    allowFullScreen
+                    allow="fullscreen"
+                    title={`${deckTitle} expanded viewer`}
+                  />
+                </div>
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </div>
   );
 }

@@ -1133,3 +1133,40 @@
     border-radius: 1rem;
   }
 }
+
+/* Expanded on-page Canva deck viewer */
+.deck-lightbox {
+  animation: deck-lightbox-fade 180ms ease-out;
+}
+
+.deck-lightbox-panel {
+  animation: deck-lightbox-rise 220ms ease-out;
+}
+
+.deck-lightbox-frame {
+  height: min(78vh, 54vw);
+  min-height: 18rem;
+}
+
+@media (max-width: 640px) {
+  .deck-lightbox-frame {
+    height: min(76vh, 118vw);
+    min-height: 22rem;
+  }
+}
+
+@keyframes deck-lightbox-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes deck-lightbox-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.6rem) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
