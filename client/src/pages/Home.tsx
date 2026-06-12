@@ -1,14 +1,8 @@
 import { AuroraBackground } from "@/components/AuroraBackground";
-import { BrandLogo } from "@/components/BrandLogo";
 import { FilmioFooter } from "@/components/FilmioFooter";
-import { InvestmentTerms } from "@/components/InvestmentTerms";
 import { FilmioNav } from "@/components/FilmioNav";
 import { HeroSection } from "@/components/HeroSection";
 import { MobileBookingBar } from "@/components/MobileBookingBar";
-import { Roadmap } from "@/components/Roadmap";
-import { TeamSection } from "@/components/TeamSection";
-import { TheRaise } from "@/components/TheRaise";
-import { TrackRecord } from "@/components/TrackRecord";
 
 type Card = {
   title: string;
@@ -464,37 +458,6 @@ export default function Home() {
       <div className="relative z-10">
         <FilmioNav />
         <HeroSection />
-
-        <SectionShell title="The Civilizational Bug in Entertainment" className="bg-cinematic-problem/60">
-          <ProblemConstellation />
-        </SectionShell>
-
-        <SectionShell title="Why Filmio Matters Now" className="bg-cinematic-why/70">
-          <div className="premium-card-grid mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
-            {investorCards.map((card, index) => <PremiumCard key={card.title} card={card} index={index} />)}
-          </div>
-        </SectionShell>
-
-        <SectionShell title="Meet Vertov:" className="bg-cinematic-fund/70" intro="Filmio's Revolutionary AI Agent Filmmaking Crew" introClassName="section-subheading-emphasis">
-          <VertovPipeline />
-        </SectionShell>
-
-        <SectionShell
-          title="AI Valuations Are Exploding"
-          className="bg-cinematic-team/70"
-          intro="The first wave created AI giants. The second wave is creating vertical AI category leaders."
-          introClassName="section-subheading-emphasis"
-        >
-          <ValuationLandscape />
-        </SectionShell>
-
-        <TeamSection />
-        <TrackRecord />
-        <Roadmap />
-        <TheRaise />
-
-        <InvestmentTerms />
-
         <FilmioFooter />
       </div>
       <MobileBookingBar />

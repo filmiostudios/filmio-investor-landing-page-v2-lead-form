@@ -27,7 +27,7 @@ export function FilmioNav() {
             onClick={scrollToBooking}
             className="inline-flex items-center rounded-full border border-filmio-sea/30 bg-primary px-4 py-2.5 font-body text-xs font-bold text-primary-foreground shadow-[0_0_24px_rgba(0,174,239,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-[0_0_34px_rgba(0,174,239,0.36)] md:px-5"
           >
-            Book a Call
+            Get Access
           </button>
         </div>
       </div>

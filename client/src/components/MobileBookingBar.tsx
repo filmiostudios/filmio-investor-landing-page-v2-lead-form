@@ -11,7 +11,7 @@ export function MobileBookingBar() {
         onClick={scrollToBooking}
         className="flex items-center justify-center w-full py-3.5 bg-primary text-primary-foreground font-body text-sm font-bold rounded-full hover:bg-primary/90 transition-colors"
       >
-        Book a Discovery Call
+        Get Instant Access →
       </button>
     </div>
   );
