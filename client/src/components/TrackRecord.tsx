@@ -1,9 +1,13 @@
 import { Film } from "lucide-react";
 
-const POSTERS = Array.from({ length: 21 }, (_, index) => ({
-  title: `PDF poster ${String(index + 1).padStart(2, "0")}`,
-  src: `pdf-poster-${String(index + 1).padStart(2, "0")}.jpg`,
-}));
+const POSTERS = Array.from({ length: 21 }, (_, index) => {
+  const id = String(index + 1).padStart(2, "0");
+  return {
+    title: `PDF poster ${id}`,
+    jpg: `pdf-poster-${id}.jpg`,
+    webp: `optimized/pdf-poster-${id}.webp`,
+  };
+});
 
 const LOGO_SIGNALS = ["Netflix", "Disney", "Universal", "Amazon MGM", "Sundance", "SXSW"];
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -12,17 +16,40 @@ function scrollToBooking() {
   document.getElementById("highlevel-embed")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function shouldLoadEagerly(direction: "left" | "right", posterCount: number, index: number) {
+  if (direction === "left") {
+    return index < posterCount;
+  }
+
+  return index >= posterCount && index < posterCount * 2;
+}
+
 function PosterRow({ direction, posters }: { direction: "left" | "right"; posters: typeof POSTERS }) {
   const repeatedPosters = [...posters, ...posters, ...posters];
 
   return (
     <div className={`poster-carousel-row poster-carousel-row-${direction}`} aria-hidden="true">
       <div className="poster-carousel-track">
-        {repeatedPosters.map((poster, index) => (
-          <article key={`${direction}-${poster.src}-${index}`} className="poster-card poster-carousel-card">
-            <img src={`${basePath}/track-posters/${poster.src}`} alt="" loading="lazy" />
-          </article>
-        ))}
+        {repeatedPosters.map((poster, index) => {
+          const eager = shouldLoadEagerly(direction, posters.length, index);
+
+          return (
+            <article key={`${direction}-${poster.jpg}-${index}`} className="poster-card poster-carousel-card">
+              <picture>
+                <source srcSet={`${basePath}/track-posters/${poster.webp}`} type="image/webp" />
+                <img
+                  src={`${basePath}/track-posters/${poster.jpg}`}
+                  alt=""
+                  width="360"
+                  height="540"
+                  loading={eager ? "eager" : "lazy"}
+                  decoding="async"
+                  fetchPriority={eager ? "high" : "auto"}
+                />
+              </picture>
+            </article>
+          );
+        })}
       </div>
     </div>
   );

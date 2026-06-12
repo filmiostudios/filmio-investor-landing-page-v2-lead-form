@@ -2903,3 +2903,36 @@
   height: 0.72rem !important;
   color: rgb(0, 174, 239) !important;
 }
+
+/* Mobile carousel loading optimization: reserve poster space immediately and avoid blank rows while images decode. */
+.poster-carousel-card {
+  contain: layout paint;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
+    radial-gradient(circle at 50% 18%, rgba(0, 174, 239, 0.18), transparent 48%),
+    rgba(6, 13, 23, 0.92);
+}
+
+.poster-carousel-card picture,
+.poster-carousel-card img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.poster-carousel-card img {
+  background: rgba(6, 13, 23, 0.96);
+  content-visibility: auto;
+}
+
+@media (max-width: 767px) {
+  .poster-carousel {
+    min-height: calc((min(8.5rem, max(7rem, 32vw)) * 1.5 * 2) + 2.4rem);
+    mask-image: linear-gradient(90deg, transparent 0%, black 5%, black 95%, transparent 100%);
+  }
+
+  .poster-carousel-card {
+    border-radius: 0.8rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 10px 24px rgba(0, 0, 0, 0.28);
+  }
+}
