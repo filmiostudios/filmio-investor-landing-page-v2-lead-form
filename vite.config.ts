@@ -213,7 +213,8 @@ const plugins = [
 ];
 
 export default defineConfig({
-  base: process.env.GITHUB_PAGES === "true" ? "/filmio-investor-landing-page-v2/" : "/",
+  // GitHub Pages is served from the custom domain invest.filmio.studio, so production assets must resolve from the domain root.
+  base: "/",
   plugins,
   resolve: {
     alias: {
