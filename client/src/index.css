@@ -2936,3 +2936,36 @@
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.09), 0 10px 24px rgba(0, 0, 0, 0.28);
   }
 }
+
+/* Proof-card fine-tuning: align internal rhythm across variable title lengths. */
+@media (min-width: 768px) {
+  .premium-card-grid .premium-card {
+    display: grid !important;
+    grid-template-rows: auto minmax(7.9rem, 1fr) auto !important;
+    min-height: 22.75rem !important;
+    padding: clamp(1.35rem, 2vw, 1.7rem) !important;
+  }
+
+  .premium-card-grid .premium-card > .mb-5 {
+    margin-bottom: clamp(1.05rem, 1.4vw, 1.25rem) !important;
+  }
+
+  .premium-card-grid .premium-card-copy {
+    display: flex !important;
+    min-height: 0 !important;
+    flex-direction: column !important;
+  }
+
+  .premium-card-grid .premium-card h3 {
+    max-width: 19ch !important;
+  }
+
+  .premium-card-grid .premium-card p:not(.premium-card-proof-tag) {
+    margin-top: 0.9rem !important;
+  }
+
+  .premium-card-grid .premium-card-proof {
+    align-self: end !important;
+    margin-top: 1rem !important;
+  }
+}
