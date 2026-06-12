@@ -14,7 +14,7 @@ export function InvestmentTerms() {
           Filmio is building the intelligence infrastructure for the future of entertainment.
         </h2>
         <p className="mx-auto mt-5 max-w-2xl font-body text-base leading-relaxed text-white/62 md:text-xl">
-          Review the investor deck, pressure-test the AI and studio thesis, and decide whether the opportunity merits deeper diligence.
+          Review the investor deck, pressure-test the AI and studio thesis, and when you're ready, book a brief, no pressure discovery call.
         </p>
         <button onClick={scrollToBooking} className="final-movement-button mt-9" type="button">
           Join the Movement. Book a Call <ArrowRight size={18} />

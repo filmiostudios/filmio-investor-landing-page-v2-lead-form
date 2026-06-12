@@ -1,31 +1,14 @@
 import { Film } from "lucide-react";
 
-const CREDIT_PILLARS = [
-  {
-    label: "Studio Features",
-    items: ["Studio development", "Packaging", "Distribution strategy"],
-  },
-  {
-    label: "Streaming + TV",
-    items: ["Series pipelines", "Audience analytics", "Release planning"],
-  },
-  {
-    label: "Festival + Indie",
-    items: ["Sundance", "SXSW", "Independent discovery"],
-  },
-  {
-    label: "Franchise Infrastructure",
-    items: ["IP evaluation", "Creator community", "Financing pathways"],
-  },
-];
-
 const POSTERS = [
-  { title: "Max Steel", src: "max-steel.jpg", signal: "Studio feature" },
-  { title: "Don’t Let The Pigeon", src: "pigeon-storytime.jpg", signal: "Family IP" },
-  { title: "KPOPS!", src: "kpops.jpg", signal: "Music + culture" },
-  { title: "Motor City", src: "motor-city.jpg", signal: "Premium feature" },
-  { title: "Dead of Winter", src: "dead-of-winter.jpg", signal: "Thriller" },
-  { title: "Fighting Spirit", src: "fighting-spirit.jpg", signal: "Documentary" },
+  { title: "Reference poster 01", src: "reference-poster-01.jpg" },
+  { title: "Reference poster 02", src: "reference-poster-02.jpg" },
+  { title: "Reference poster 03", src: "reference-poster-03.jpg" },
+  { title: "Reference poster 04", src: "reference-poster-04.jpg" },
+  { title: "Reference poster 05", src: "reference-poster-05.jpg" },
+  { title: "Reference poster 06", src: "reference-poster-06.jpg" },
+  { title: "Reference poster 07", src: "reference-poster-07.jpg" },
+  { title: "Reference poster 08", src: "reference-poster-08.jpg" },
 ];
 
 const LOGO_SIGNALS = ["Netflix", "Disney", "Universal", "Amazon MGM", "Sundance", "SXSW"];
@@ -35,7 +18,26 @@ function scrollToBooking() {
   document.getElementById("highlevel-embed")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function PosterRow({ direction, posters }: { direction: "left" | "right"; posters: typeof POSTERS }) {
+  const repeatedPosters = [...posters, ...posters, ...posters];
+
+  return (
+    <div className={`poster-carousel-row poster-carousel-row-${direction}`} aria-hidden="true">
+      <div className="poster-carousel-track">
+        {repeatedPosters.map((poster, index) => (
+          <article key={`${direction}-${poster.src}-${index}`} className="poster-card poster-carousel-card">
+            <img src={`${basePath}/track-posters/${poster.src}`} alt="" loading="lazy" />
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function TrackRecord() {
+  const topRowPosters = POSTERS;
+  const bottomRowPosters = [...POSTERS].reverse();
+
   return (
     <section className="filmio-section track-record-section relative overflow-hidden border-t border-white/5 bg-cinematic-team py-16 md:py-24">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-filmio-green/40 to-transparent" />
@@ -60,30 +62,9 @@ export function TrackRecord() {
             ))}
           </div>
 
-          <div className="poster-showcase" aria-label="Representative films and series">
-            {POSTERS.map((poster) => (
-              <article key={poster.title} className="poster-card">
-                <img src={`${basePath}/track-posters/${poster.src}`} alt={`${poster.title} poster`} loading="lazy" />
-                <div className="poster-card-overlay">
-                  <span>{poster.signal}</span>
-                  <strong>{poster.title}</strong>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <div className="track-record-grid">
-            {CREDIT_PILLARS.map((pillar, index) => (
-              <article key={pillar.label} className="track-credit-card">
-                <span className="track-credit-index">{String(index + 1).padStart(2, "0")}</span>
-                <h3>{pillar.label}</h3>
-                <div>
-                  {pillar.items.map((item) => (
-                    <p key={item}>{item}</p>
-                  ))}
-                </div>
-              </article>
-            ))}
+          <div className="poster-carousel" aria-label="Representative films and series poster carousel">
+            <PosterRow direction="left" posters={topRowPosters} />
+            <PosterRow direction="right" posters={bottomRowPosters} />
           </div>
         </div>
 

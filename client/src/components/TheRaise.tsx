@@ -5,7 +5,7 @@ const ROUND_CARDS = [
   { label: "SAFE Tranche 2", value: "Open", tone: "open" },
   { label: "Discount", value: "15%", tone: "metric" },
   { label: "Valuation Cap", value: "$30M", tone: "metric" },
-  { label: "Next Step", value: "$3M priced round", tone: "priced" },
+  { label: "Next Step", value: "Priced Round", tone: "priced" },
 ];
 
 const USE_OF_FUNDS = [

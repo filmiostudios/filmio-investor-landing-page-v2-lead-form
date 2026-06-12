@@ -16,7 +16,7 @@ const MILESTONES = [
   {
     year: "2026",
     now: true,
-    title: "Data into finance",
+    title: "AI & Partnerships Launch",
     desc: "Vertov, GoScore, Thalberg, advisors, ambassadors, and validated slate execution.",
   },
   {

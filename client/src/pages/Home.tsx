@@ -3,7 +3,7 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { FilmioFooter } from "@/components/FilmioFooter";
 import { InvestmentTerms } from "@/components/InvestmentTerms";
 import { FilmioNav } from "@/components/FilmioNav";
-import { HeroSection, CanvaEmbed } from "@/components/HeroSection";
+import { HeroSection } from "@/components/HeroSection";
 import { MobileBookingBar } from "@/components/MobileBookingBar";
 import { Roadmap } from "@/components/Roadmap";
 import { TeamSection } from "@/components/TeamSection";
@@ -492,12 +492,6 @@ export default function Home() {
         <TrackRecord />
         <Roadmap />
         <TheRaise />
-
-        <SectionShell title="Review the Investor Deck" className="bg-cinematic-fund/70">
-          <div className="deck-shell rounded-[2rem] border border-white/10 p-4 md:p-6">
-            <CanvaEmbed />
-          </div>
-        </SectionShell>
 
         <InvestmentTerms />
 
