@@ -51,7 +51,7 @@ export function TheRaise() {
             <span className="font-body text-[11px] font-bold uppercase tracking-[0.15em] text-filmio-sea">The Raise</span>
           </div>
           <h2 className="font-display text-[clamp(2.15rem,4.3vw,4.7rem)] font-extrabold leading-[0.98] tracking-tight text-white">
-            Raising <span className="text-filmio-sea">$2M SAFE</span> + <span className="text-filmio-green">$3M Priced Round</span>
+            Raising <span className="text-filmio-sea">$2M SAFE</span>
           </h2>
           <p className="mx-auto mt-5 max-w-3xl font-body text-base leading-relaxed text-white/64 md:text-xl">
             The current round is designed to unlock the AI, studio, fund, and partnership work needed for Filmio’s next execution phase.

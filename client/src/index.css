@@ -2969,3 +2969,26 @@
     margin-top: 1rem !important;
   }
 }
+
+/* Advisor card overflow correction: allow long advisor names to wrap while preserving symmetrical header rhythm. */
+.advisor-chip-card > div {
+  min-height: 3.15rem !important;
+}
+
+.advisor-chip-card .advisor-linkedin-name,
+.advisor-chip-card strong {
+  width: 100% !important;
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+}
+
+.advisor-chip-card .advisor-linkedin-name {
+  flex-wrap: nowrap !important;
+}
+
+.advisor-chip-card .advisor-linkedin-name span {
+  min-width: 0 !important;
+  overflow-wrap: anywhere !important;
+}

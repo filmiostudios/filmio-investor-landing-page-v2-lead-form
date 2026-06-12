@@ -67,9 +67,9 @@ const ADVISORS = [
     signal: "Writer-director perspective across studio and independent storytelling.",
   },
   {
-    name: "Amazon MGM Studios exec",
-    title: "Strategic Advisor",
-    signal: "Current studio operating perspective; name withheld for website confidentiality.",
+    name: "Amazon MGM Studios",
+    title: "Senior Amazon Executive",
+    signal: "Current studio operating perspective; name withheld for website confidentiality. Not officially endorsed by Amazon.",
   },
 ];
 

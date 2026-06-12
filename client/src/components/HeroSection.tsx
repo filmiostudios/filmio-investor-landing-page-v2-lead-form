@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
 const BOOKING_URL = "https://api.leadconnectorhq.com/widget/bookings/filmio-studios-discovery";
-const HEYGEN_EMBED_URL = "https://app.heygen.com/embeds/7a02df82a8944c69886006bdb46102ce";
+const HERO_VIDEO_EMBED_URL = "https://player.vimeo.com/video/1200645001?badge=0&autopause=0&player_id=0&app_id=58479";
 const CANVA_EMBED_URL = "https://www.canva.com/design/DAHLXrRRU2c/fd2PByLcd1haA-Ux9Fq-rA/view?embed";
 
 function VideoEmbed() {
@@ -11,10 +11,11 @@ function VideoEmbed() {
       <div className="relative aspect-video w-full">
         <iframe
           className="absolute inset-0 h-full w-full"
-          src={HEYGEN_EMBED_URL}
-          title="SpaceX - Vertov 7 - Landing Page Book Your Call Now"
+          src={HERO_VIDEO_EMBED_URL}
+          title="SpaceX_-_Vertov_7_-_Landing_Page_Book_Your_Call_Now_with_captions"
           frameBorder="0"
-          allow="encrypted-media; fullscreen;"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
           allowFullScreen
         />
       </div>
