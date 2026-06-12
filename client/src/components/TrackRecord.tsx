@@ -1,15 +1,9 @@
 import { Film } from "lucide-react";
 
-const POSTERS = [
-  { title: "Reference poster 01", src: "reference-poster-01.jpg" },
-  { title: "Reference poster 02", src: "reference-poster-02.jpg" },
-  { title: "Reference poster 03", src: "reference-poster-03.jpg" },
-  { title: "Reference poster 04", src: "reference-poster-04.jpg" },
-  { title: "Reference poster 05", src: "reference-poster-05.jpg" },
-  { title: "Reference poster 06", src: "reference-poster-06.jpg" },
-  { title: "Reference poster 07", src: "reference-poster-07.jpg" },
-  { title: "Reference poster 08", src: "reference-poster-08.jpg" },
-];
+const POSTERS = Array.from({ length: 21 }, (_, index) => ({
+  title: `PDF poster ${String(index + 1).padStart(2, "0")}`,
+  src: `pdf-poster-${String(index + 1).padStart(2, "0")}.jpg`,
+}));
 
 const LOGO_SIGNALS = ["Netflix", "Disney", "Universal", "Amazon MGM", "Sundance", "SXSW"];
 const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
@@ -35,8 +29,8 @@ function PosterRow({ direction, posters }: { direction: "left" | "right"; poster
 }
 
 export function TrackRecord() {
-  const topRowPosters = POSTERS;
-  const bottomRowPosters = [...POSTERS].reverse();
+  const topRowPosters = POSTERS.slice(0, 11);
+  const bottomRowPosters = POSTERS.slice(11);
 
   return (
     <section className="filmio-section track-record-section relative overflow-hidden border-t border-white/5 bg-cinematic-team py-16 md:py-24">

@@ -56,7 +56,7 @@ const SECOND_ROW: TeamMember[] = [
 const ADVISORS = [
   {
     name: "Kevin Harrington",
-    title: "Original Shark · Shark Tank",
+    title: "Shark Tank",
     linkedin: "https://www.linkedin.com/in/kevinharrington1/",
     signal: "Capital formation, consumer scale, and direct-response growth.",
   },
@@ -73,7 +73,7 @@ const ADVISORS = [
   },
 ];
 
-const EXPERIENCE_SIGNALS = ["Netflix", "Disney", "Universal", "Amazon MGM", "Sundance", "SXSW"];
+const EXPERIENCE_SIGNALS = ["Netflix", "Disney", "Universal", "Amazon MGM", "T-Mobile", "Arthur D. Little"];
 
 function scrollToBooking() {
   document.getElementById("highlevel-embed")?.scrollIntoView({ behavior: "smooth", block: "start" });

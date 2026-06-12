@@ -28,19 +28,19 @@ const investorCards: Card[] = [
     title: "Entertainment still lacks intelligence infrastructure",
     body: "Film still lacks its category-defining AI intelligence layer.",
     proofTag: "Market Proof",
-    proofPoints: ["S&P $126B (finance)", "Sportradar/Moneyball $4.6B (sports)", "Verisk $24B (INSURANCE)"],
+    proofPoints: ["S&P $126B (finance)", "Moneyball $4.6B (sports)", "Verisk $24B (insurance)"],
   },
   {
     title: "Filmio already has proprietary signal",
     body: "Audience behavior, creator activity, project scoring, and outcome data can compound into a durable moat.",
     proofTag: "Proprietary Data Moat",
-    proofPoints: ["Film & TV Projects 350+", "Fans acquired 415K+", "Votes / stakes 340M+"],
+    proofPoints: ["Film & TV Projects 350+", "Fans acquired 415K+", "Fan signals 340M+"],
   },
   {
     title: "The market is massive",
     body: "Entertainment remains one of the world’s largest and most culturally influential industries.",
-    proofTag: "$3T Entertainment Market",
-    proofPoints: ["Indie Film & TV $6.8B", "Total Film & TV $200B", "10M Filmmakers", "200M Video Creators"],
+    proofTag: "$3 Trillion Market",
+    proofPoints: ["10M Filmmakers", "200M Video Creators", "3.6B Fans"],
   },
 ];
 
@@ -470,7 +470,7 @@ export default function Home() {
         </SectionShell>
 
         <SectionShell title="Why Filmio Matters Now" className="bg-cinematic-why/70">
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="premium-card-grid mx-auto grid max-w-6xl gap-5 md:grid-cols-2">
             {investorCards.map((card, index) => <PremiumCard key={card.title} card={card} index={index} />)}
           </div>
         </SectionShell>

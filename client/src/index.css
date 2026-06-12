@@ -2606,3 +2606,300 @@
   transform: scale(1.75) !important;
   transform-origin: center;
 }
+
+/* Symmetry refinement pass: balanced proof cards, normalized AI valuation boxes, compact leadership, and uniform advisors. */
+.premium-card-grid {
+  align-items: stretch;
+}
+
+.premium-card-grid .premium-card {
+  min-height: 0 !important;
+  height: 100%;
+  padding: clamp(1.15rem, 2vw, 1.55rem) !important;
+}
+
+.premium-card-grid .premium-card-copy {
+  min-height: 0 !important;
+}
+
+.premium-card-grid .premium-card h3 {
+  max-width: 18ch;
+  font-size: clamp(1.45rem, 2vw, 2.05rem) !important;
+  line-height: 1.02 !important;
+}
+
+.premium-card-grid .premium-card p:not(.premium-card-proof-tag) {
+  max-width: 44rem;
+  font-size: clamp(0.88rem, 1.05vw, 1rem) !important;
+  line-height: 1.5 !important;
+}
+
+.premium-card-grid .premium-card-proof {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem !important;
+  margin-top: 1.15rem !important;
+}
+
+.premium-card-grid .premium-card-proof-tag {
+  grid-column: 1 / -1;
+  display: flex;
+  min-height: 2.7rem;
+  width: 100% !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0.58rem 0.8rem !important;
+  text-align: center;
+  white-space: normal;
+}
+
+.premium-card-grid .premium-card-proof .rounded-full {
+  min-height: 3.05rem !important;
+  width: 100% !important;
+  padding: 0.62rem 0.72rem !important;
+  font-size: clamp(0.62rem, 0.75vw, 0.72rem) !important;
+  line-height: 1.12 !important;
+  letter-spacing: 0.08em !important;
+}
+
+@media (max-width: 767px) {
+  .premium-card-grid .premium-card-proof {
+    grid-template-columns: 1fr;
+  }
+}
+
+.valuation-panel .grid {
+  align-items: stretch !important;
+}
+
+.valuation-panel .ai-market-card {
+  grid-template-rows: 8.75rem minmax(5.95rem, 1fr) 2.35rem !important;
+  min-height: 20.25rem !important;
+  height: 100%;
+  gap: 0.82rem !important;
+  padding: 1rem !important;
+}
+
+.valuation-panel .ai-market-logo-wrap,
+.valuation-panel .ai-market-logo.brand-logo-tile {
+  height: 8.75rem !important;
+  min-height: 8.75rem !important;
+}
+
+.valuation-panel .ai-market-logo.brand-logo-tile {
+  overflow: hidden;
+  padding: 1rem !important;
+}
+
+.valuation-panel .ai-market-card-copy {
+  display: flex;
+  min-height: 5.95rem !important;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.valuation-panel .ai-market-card h4 {
+  min-height: 2.15rem;
+}
+
+.valuation-panel .ai-market-value {
+  display: inline-flex;
+  min-height: 2.35rem;
+  align-items: center;
+  justify-content: center;
+  align-self: start;
+  margin-top: 0 !important;
+}
+
+.ai-market-logo.brand-logo-harvey .brand-logo-img,
+.brand-logo-tile.brand-logo-harvey.ai-market-logo .brand-logo-img {
+  max-height: 92px !important;
+  max-width: 310px !important;
+  transform: scale(2.55) !important;
+}
+
+.ai-market-logo.brand-logo-sierra .brand-logo-img,
+.brand-logo-tile.brand-logo-sierra.ai-market-logo .brand-logo-img {
+  max-height: 92px !important;
+  max-width: 310px !important;
+  transform: scale(2.35) !important;
+}
+
+@media (max-width: 767px) {
+  .valuation-panel .ai-market-card {
+    grid-template-rows: auto auto auto !important;
+    min-height: 0 !important;
+  }
+
+  .valuation-panel .ai-market-logo-wrap,
+  .valuation-panel .ai-market-logo.brand-logo-tile {
+    height: 7.25rem !important;
+    min-height: 7.25rem !important;
+  }
+}
+
+.team-experience-section .mx-auto.mb-10 {
+  margin-bottom: 1.45rem !important;
+}
+
+.team-experience-section .team-experience-strip {
+  margin-bottom: 1rem !important;
+  gap: 0.55rem 0.9rem !important;
+  padding: 0.72rem 0.95rem !important;
+}
+
+.team-experience-section .team-experience-strip strong {
+  font-size: clamp(0.82rem, 1.25vw, 0.98rem) !important;
+}
+
+.team-leadership-card,
+.team-leadership-card-featured {
+  min-height: 0 !important;
+  height: 100%;
+  padding: 0.88rem 0.95rem !important;
+}
+
+.team-leadership-card-featured {
+  padding: 0.95rem 1rem !important;
+}
+
+.team-card-topline {
+  font-size: 0.58rem !important;
+  letter-spacing: 0.13em !important;
+}
+
+.team-card-name {
+  margin-top: 0.52rem !important;
+  font-size: clamp(1.22rem, 1.55vw, 1.58rem) !important;
+  line-height: 1.02 !important;
+}
+
+.team-leadership-card p {
+  margin-top: 0.5rem !important;
+  font-size: 0.76rem !important;
+  line-height: 1.34 !important;
+}
+
+.advisor-band {
+  margin-top: 1rem !important;
+}
+
+.advisor-chip-grid {
+  align-items: stretch;
+}
+
+.advisor-chip-card {
+  display: grid !important;
+  grid-template-rows: auto 1fr;
+  min-height: 8.25rem;
+  gap: 0.55rem !important;
+  padding: 0.9rem !important;
+}
+
+.advisor-chip-card a,
+.advisor-chip-card strong,
+.advisor-linkedin-name {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.45rem;
+  width: fit-content;
+  max-width: 100%;
+  font-size: clamp(1.02rem, 1.35vw, 1.18rem) !important;
+  line-height: 1.05 !important;
+  color: white !important;
+  white-space: nowrap;
+}
+
+.advisor-chip-card span:not(.team-linkedin-icon) {
+  font-size: 0.66rem !important;
+  letter-spacing: 0.11em !important;
+}
+
+.advisor-chip-card p {
+  font-size: 0.78rem !important;
+  line-height: 1.36 !important;
+}
+
+@media (min-width: 768px) {
+  .advisor-chip-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .advisor-chip-card {
+    min-height: 0;
+  }
+
+  .advisor-chip-card a,
+  .advisor-chip-card strong,
+  .advisor-linkedin-name {
+    white-space: normal;
+  }
+}
+
+/* Final correction: use cropped Harvey/Sierra SVG viewBoxes at natural scale for non-clipped logo symmetry. */
+.valuation-panel .ai-market-logo.brand-logo-tile {
+  overflow: hidden !important;
+}
+
+.valuation-panel .ai-market-logo.brand-logo-harvey .brand-logo-img,
+.valuation-panel .brand-logo-tile.brand-logo-harvey.ai-market-logo .brand-logo-img,
+.valuation-panel .ai-market-logo.brand-logo-sierra .brand-logo-img,
+.valuation-panel .brand-logo-tile.brand-logo-sierra.ai-market-logo .brand-logo-img {
+  height: 4.75rem !important;
+  width: 86% !important;
+  max-height: 4.75rem !important;
+  max-width: 86% !important;
+  object-fit: contain !important;
+  transform: none !important;
+  transform-origin: center !important;
+}
+
+.valuation-panel .ai-market-logo.brand-logo-harvey,
+.valuation-panel .ai-market-logo.brand-logo-sierra {
+  padding-inline: 0.9rem !important;
+}
+
+/* Final correction: advisor linked-name spans should inherit the advisor-name style, not the small title-label style. */
+.advisor-chip-card .advisor-linkedin-name,
+.advisor-chip-card strong {
+  font-family: var(--font-display, inherit) !important;
+  font-size: clamp(1.02rem, 1.25vw, 1.14rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.06 !important;
+  color: #fff !important;
+  letter-spacing: -0.015em !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+}
+
+.advisor-chip-card .advisor-linkedin-name span {
+  display: inline !important;
+  margin: 0 !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  line-height: inherit !important;
+  color: inherit !important;
+  letter-spacing: inherit !important;
+  text-transform: inherit !important;
+}
+
+.advisor-chip-card > div > span {
+  display: block !important;
+  margin-top: 0.18rem !important;
+  font-family: var(--font-body, inherit) !important;
+  font-size: 0.66rem !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0.11em !important;
+  color: rgb(0, 174, 239) !important;
+  text-transform: uppercase !important;
+}
+
+.advisor-chip-card .team-linkedin-icon {
+  flex: 0 0 0.72rem !important;
+  width: 0.72rem !important;
+  height: 0.72rem !important;
+  color: rgb(0, 174, 239) !important;
+}
