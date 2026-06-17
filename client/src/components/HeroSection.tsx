@@ -93,7 +93,7 @@ export function HeroSection() {
               className="font-display leading-[1.08] text-foreground mb-5 font-extrabold tracking-tight"
               style={{ fontSize: "clamp(1.9rem, 4.5vw, 3.1rem)" }}
             >
-              Be the Reason Hollywood's Next Hit Gets Made.
+              AI's First Wave Delivered 1,000x ROI. Early SpaceX Investors Made 4,268x. Welcome To Wave 2!
             </h1>
 
             {/* Backed by badge */}
@@ -136,8 +136,8 @@ export function HeroSection() {
                   className="font-display font-extrabold leading-snug"
                   style={{ fontSize: "clamp(0.95rem, 2vw, 1.25rem)", color: "#ffffff", textShadow: "0 2px 16px rgba(0,0,0,0.8)", maxWidth: "26rem" }}
                 >
-                  Get access to Filmio's confidential investor presentation.{" "}
-                  <span style={{ color: "oklch(0.65 0.18 220)" }}>Complete the form for access.</span>
+                  Filmio is building the AI Intelligence Infrastructure for Entertainment.{" "}
+                  <span style={{ color: "oklch(0.65 0.18 220)" }}>Fill out the form below for the full investor deck.</span>
                 </p>
                 {/* Arrow — right on desktop, down on mobile */}
                 <div className="mt-5 flex items-center gap-2">
