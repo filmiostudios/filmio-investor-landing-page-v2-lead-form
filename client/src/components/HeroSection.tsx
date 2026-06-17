@@ -136,8 +136,7 @@ export function HeroSection() {
                   className="font-display font-extrabold leading-snug"
                   style={{ fontSize: "clamp(0.95rem, 2vw, 1.25rem)", color: "#ffffff", textShadow: "0 2px 16px rgba(0,0,0,0.8)", maxWidth: "26rem" }}
                 >
-                  Filmio is building the AI intelligence and filmmaking agents for entertainment.{" "}
-                  <span style={{ color: "oklch(0.65 0.18 220)" }}>Fill out the form below for the full investor deck.</span>
+                  Filmio is building the AI intelligence infrastructure and vertical AI agents for the $2.9 trillion entertainment industry.
                 </p>
                 {/* Arrow — right on desktop, down on mobile */}
                 <div className="mt-5 flex items-center gap-2">
