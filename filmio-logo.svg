@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 130" role="img" aria-labelledby="title desc">
+  <title id="title">Filmio Studios logo</title>
+  <desc id="desc">Filmio Studios wordmark with a forward play mark.</desc>
+  <defs>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#75F69E"/>
+      <stop offset="0.52" stop-color="#00AEEF"/>
+      <stop offset="1" stop-color="#E91E8C"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <g transform="translate(0 18)">
+      <text x="0" y="58" fill="#F8FBFF" font-family="Montserrat, Arial, sans-serif" font-size="58" font-weight="300" letter-spacing="4">filmio</text>
+      <text x="6" y="95" fill="#B8C6D7" font-family="Montserrat, Arial, sans-serif" font-size="15" font-weight="600" letter-spacing="12">STUDIOS</text>
+      <circle cx="235" cy="50" r="4.3" fill="#00AEEF" opacity="0.95"/>
+      <g transform="translate(287 15)" filter="url(#glow)">
+        <path d="M0 0 76 40 0 80Z" fill="url(#mark)" opacity="0.9"/>
+        <path d="M10 17 54 40 10 63Z" fill="#071125" opacity="0.88"/>
+        <path d="M75 39h150" stroke="url(#mark)" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+      </g>
+    </g>
+  </g>
+</svg>
